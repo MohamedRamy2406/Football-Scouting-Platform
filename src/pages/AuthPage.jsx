@@ -16,17 +16,16 @@ export default function AuthPage() {
           <span>PATH2PRO</span>
         </div>
         <p className="hero-description">
-          The elite network for professional football scouting. Connect with talent, manage contracts, and analyze performance data in real-time.
-        </p>
+Built for the next generation of Egyptian ballers. Showcase your skills, track your stats, and connect directly with top clubs and scouts.        </p>
 
         <div className="feature-cards">
           <div className="feature-card">
-            <h4>Advanced Analytics</h4>
-            <p>Deep-dive into player metrics with our proprietary heatmaps and tactical scoring system.</p>
+            <h4>Let Your Game Talk</h4>
+            <p>Share your best match moments, highlight your skills, and show scouts exactly what you bring to the pitch.</p>
           </div>
           <div className="feature-card">
-            <h4>Secure Contracts</h4>
-            <p>End-to-end encrypted negotiation tools designed specifically for agents and club directors.</p>
+            <h4>Real Trial Offers</h4>
+            <p>Receive official trial invitations directly on your dashboard from verified scouts—no middlemen, no fake promises.</p>
           </div>
         </div>
       </div>
@@ -39,8 +38,8 @@ export default function AuthPage() {
           <h2>{activeTab === 'register' ? 'Choose Account Type' : 'Welcome Back'}</h2>
           <p>
             {activeTab === 'register'
-              ? 'Select your primary role on the platform to customize your dashboard.'
-              : 'Enter your credentials to access your account.'}
+              ? 'Select your primary role on the platform to get started.'
+              : 'Enter your email and password to access your account.'}
           </p>
         </div>
 

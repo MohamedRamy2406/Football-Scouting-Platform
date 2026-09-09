@@ -88,7 +88,7 @@ navigate(destination, {
 
           <input
             type="email"
-            placeholder="scout@club.com"
+            placeholder="james@gmail.com"
             value={formData.email}
             onChange={(e) =>
               setFormData({
