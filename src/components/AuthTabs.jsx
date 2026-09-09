@@ -1,18 +1,35 @@
-export default function AuthTabs({ activeTab, setActiveTab }) {
+import { useTranslation } from 'react-i18next';
+
+export default function AuthTabs({
+  activeTab,
+  setActiveTab
+}) {
+  const { t } = useTranslation();
+
   return (
     <div className="auth-tabs">
+
       <button
-        className={`tab-btn ${activeTab === 'login' ? 'active' : ''}`}
+        type="button"
+        className={`tab-btn ${
+          activeTab === 'login' ? 'active' : ''
+        }`}
         onClick={() => setActiveTab('login')}
       >
-        LOGIN
+        {t('tabs.login')}
       </button>
+
       <button
-        className={`tab-btn ${activeTab === 'register' ? 'active' : ''}`}
+        type="button"
+        className={`tab-btn ${
+          activeTab === 'register' ? 'active' : ''
+        }`}
         onClick={() => setActiveTab('register')}
       >
-        REGISTER
+        {t('tabs.register')}
       </button>
+
     </div>
   );
 }
+

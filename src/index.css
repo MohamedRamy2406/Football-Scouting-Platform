@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,28 +7,41 @@
   font-family: 'Inter', sans-serif;
 }
 
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   background-color: #0b0d10;
   color: #f3f4f6;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 }
+
+/* ============================================
+   AUTH PAGE CONTAINER
+============================================ */
 
 .auth-container {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  min-height: 650px;
-  margin: 2rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
   gap: 4rem;
   align-items: center;
+  justify-content: center;
 }
 
-/* Left Hero Section */
+/* ============================================
+   LEFT HERO SECTION
+============================================ */
+
 .hero-section {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -47,6 +60,7 @@ body {
 .brand-icon {
   width: 32px;
   height: 32px;
+  min-width: 32px;
   background: #00ff66;
   border-radius: 50%;
   display: grid;
@@ -64,7 +78,7 @@ body {
 
 .feature-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
@@ -88,16 +102,24 @@ body {
   line-height: 1.4;
 }
 
-/* Right Auth Card Section */
+/* ============================================
+   RIGHT AUTH CARD
+============================================ */
+
 .auth-card {
   width: 100%;
   max-width: 460px;
+  min-width: 0;
   background: #12151c;
   border: 1px solid #1f2430;
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
+
+/* ============================================
+   AUTH TABS
+============================================ */
 
 .auth-tabs {
   display: flex;
@@ -136,6 +158,10 @@ body {
   border-radius: 2px;
 }
 
+/* ============================================
+   FORM HEADER
+============================================ */
+
 .form-header h2 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -145,18 +171,24 @@ body {
 .form-header p {
   color: #6b7280;
   font-size: 0.85rem;
+  line-height: 1.5;
   margin-bottom: 1.5rem;
 }
 
-/* Role Selector Grid */
+/* ============================================
+   ROLE SELECTOR
+============================================ */
+
 .account-selector {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
 .role-btn {
+  width: 100%;
+  min-width: 0;
   background: #181c26;
   border: 1px solid #262c3d;
   border-radius: 10px;
@@ -180,6 +212,10 @@ body {
   color: #ffffff;
 }
 
+/* ============================================
+   FORM GROUP
+============================================ */
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -198,10 +234,12 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .input-wrapper input {
   width: 100%;
+  min-width: 0;
   background: #181c26;
   border: 1px solid #262c3d;
   border-radius: 8px;
@@ -221,7 +259,12 @@ body {
   left: 0.85rem;
   color: #6b7280;
   font-size: 0.9rem;
+  pointer-events: none;
 }
+
+/* ============================================
+   SUBMIT BUTTON
+============================================ */
 
 .submit-btn {
   width: 100%;
@@ -239,4 +282,415 @@ body {
 
 .submit-btn:hover {
   opacity: 0.9;
+}
+
+.submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ============================================
+   ERROR MESSAGE
+============================================ */
+
+.error-message {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* ============================================
+   SMALL TEXT
+============================================ */
+
+small {
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* ============================================
+   TABLETS
+   768px - 1023px
+============================================ */
+
+@media (max-width: 1023px) {
+
+  .auth-container {
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+
+  .auth-card {
+    max-width: 420px;
+    padding: 2rem;
+  }
+
+  .hero-section {
+    gap: 1.5rem;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   SMALL TABLETS / LARGE PHONES
+   600px - 767px
+============================================ */
+
+@media (max-width: 767px) {
+
+  .auth-container {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .hero-section {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-description {
+    max-width: 600px;
+  }
+
+  .feature-cards {
+    width: 100%;
+    max-width: 600px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .auth-tabs {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   PHONES
+   480px - 599px
+============================================ */
+
+@media (max-width: 599px) {
+
+  .auth-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .hero-section {
+    gap: 1.25rem;
+  }
+
+  .brand-logo {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .feature-card {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+
+  .auth-tabs {
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-header p {
+    font-size: 0.8rem;
+  }
+
+  .account-selector {
+    gap: 0.5rem;
+  }
+
+  .role-btn {
+    padding: 0.85rem 0.4rem;
+  }
+}
+
+/* ============================================
+   VERY SMALL PHONES
+   320px - 479px
+============================================ */
+
+@media (max-width: 479px) {
+
+  .auth-container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+
+  .brand-logo {
+    font-size: 1.25rem;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 0.85rem;
+  }
+
+  .hero-description {
+    font-size: 0.82rem;
+  }
+
+  .feature-card {
+    padding: 0.9rem;
+  }
+
+  .feature-card h4 {
+    font-size: 0.85rem;
+  }
+
+  .feature-card p {
+    font-size: 0.75rem;
+  }
+
+  .auth-card {
+    padding: 1.15rem;
+    border-radius: 12px;
+  }
+
+  .auth-tabs {
+    gap: 1rem;
+  }
+
+  .tab-btn {
+    font-size: 0.75rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .form-header p {
+    font-size: 0.75rem;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.75rem 0.7rem 2.3rem;
+  }
+
+  .submit-btn {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ============================================
+   EXTRA SMALL DEVICES
+   Below 360px
+============================================ */
+
+@media (max-width: 359px) {
+
+  .auth-container {
+    padding: 0.5rem;
+  }
+
+  .auth-card {
+    padding: 1rem;
+  }
+
+  .account-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-tabs {
+    gap: 0.75rem;
+  }
+}
+
+/* ============================================
+   LANDSCAPE PHONES
+============================================ */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+  .auth-container {
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-section {
+    gap: 1rem;
+  }
+
+  .feature-cards {
+    display: none;
+  }
+
+  .auth-card {
+    padding: 1.25rem;
+  }
+}
+.name-fields {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.name-fields .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 479px) {
+  .name-fields {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* ============================================
+   LANGUAGE SELECTOR
+============================================ */
+
+.auth-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.language-selector {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.45rem 0.65rem;
+
+  background: #12151c;
+  border: 1px solid #1f2430;
+  border-radius: 8px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.language-selector button {
+  background: none;
+  border: none;
+
+  color: #6b7280;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 0.25rem 0.35rem;
+
+  transition: color 0.2s;
+}
+
+.language-selector button:hover {
+  color: #ffffff;
+}
+
+.language-selector button.language-active {
+  color: #00ff66;
+}
+
+.language-divider {
+  color: #3b445c;
+  user-select: none;
+}
+
+
+/* ============================================
+   RTL SUPPORT
+============================================ */
+
+html[dir='rtl'] body {
+  direction: rtl;
+}
+
+html[dir='rtl'] .language-selector {
+  right: auto;
+  left: 1.5rem;
+}
+
+html[dir='rtl'] .auth-tabs {
+  justify-content: flex-start;
+}
+
+html[dir='rtl'] .input-wrapper input {
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+}
+
+html[dir='rtl'] .input-icon {
+  left: auto;
+  right: 0.85rem;
+}
+
+
+/* ============================================
+   MOBILE LANGUAGE SELECTOR
+============================================ */
+
+@media (max-width: 599px) {
+
+  .language-selector {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  html[dir='rtl'] .language-selector {
+    right: auto;
+    left: 0.75rem;
+  }
+
+  .language-selector button {
+    font-size: 0.7rem;
+  }
 }

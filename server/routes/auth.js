@@ -269,5 +269,27 @@ router.post('/login', async (req, res) => {
     return res.status(500).json({ message: 'Internal server error.' });
   }
 });
+// ============================================
+// CHECK CURRENT SESSION
+// GET /api/auth/me
+// ============================================
+
+router.get('/me', (req, res) => {
+
+  // No active session
+  if (!req.session || !req.session.user) {
+    return res.status(401).json({
+      authenticated: false,
+      user: null
+    });
+  }
+
+  // Active session
+  return res.status(200).json({
+    authenticated: true,
+    user: req.session.user
+  });
+
+});
 
 export default router;

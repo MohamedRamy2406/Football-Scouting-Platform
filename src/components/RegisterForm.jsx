@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
 
 export default function RegisterForm({ role }) {
 
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -17,14 +19,12 @@ export default function RegisterForm({ role }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-
   const handleSubmit = async (e) => {
 
     e.preventDefault();
 
     setError('');
     setLoading(true);
-
 
     try {
 
@@ -46,51 +46,44 @@ export default function RegisterForm({ role }) {
         }
       );
 
-
       const data = await response.json();
-
 
       if (!response.ok) {
 
         setError(
-          data.message || 'Registration failed.'
+          data.message || t('register.failed')
         );
 
         return;
-
       }
 
+      console.log(
+        'Registered user:',
+        data.user
+      );
 
-      console.log('Registered user:', data.user);
-
-
-      // Update React authentication state
       setUser(data.user);
 
-
-      // Redirect based on role
       const routes = {
         PLAYER: '/player',
         SCOUT: '/scout'
       };
 
-
-      const destination = routes[data.user.role];
-
+      const destination =
+        routes[data.user.role];
 
       if (!destination) {
 
-        setError('Invalid user role.');
+        setError(
+          t('register.invalidRole')
+        );
 
         return;
-
       }
-
 
       navigate(destination, {
         replace: true
       });
-
 
     } catch (error) {
 
@@ -100,7 +93,7 @@ export default function RegisterForm({ role }) {
       );
 
       setError(
-        'Unable to connect to the server.'
+        t('errors.serverConnection')
       );
 
     } finally {
@@ -111,39 +104,31 @@ export default function RegisterForm({ role }) {
 
   };
 
-
   return (
 
     <form onSubmit={handleSubmit}>
 
       {error && (
-        <div
-          className="error-message"
-        >
+        <div className="error-message">
           {error}
         </div>
       )}
 
+      <div className="name-fields">
 
-      <div
-        style={{
-          display: 'flex',
-          gap: '0.75rem'
-        }}
-      >
+        <div className="form-group">
 
-        <div
-          className="form-group"
-          style={{ flex: 1 }}
-        >
-
-          <label>FIRST NAME</label>
+          <label>
+            {t('register.firstName')}
+          </label>
 
           <div className="input-wrapper">
 
             <input
               type="text"
-              placeholder="Mohamed"
+              placeholder={t(
+                'register.firstNamePlaceholder'
+              )}
               value={formData.firstName}
               onChange={(e) =>
                 setFormData({
@@ -158,19 +143,19 @@ export default function RegisterForm({ role }) {
 
         </div>
 
+        <div className="form-group">
 
-        <div
-          className="form-group"
-          style={{ flex: 1 }}
-        >
-
-          <label>LAST NAME</label>
+          <label>
+            {t('register.lastName')}
+          </label>
 
           <div className="input-wrapper">
 
             <input
               type="text"
-              placeholder="Ahmed"
+              placeholder={t(
+                'register.lastNamePlaceholder'
+              )}
               value={formData.lastName}
               onChange={(e) =>
                 setFormData({
@@ -187,10 +172,11 @@ export default function RegisterForm({ role }) {
 
       </div>
 
-
       <div className="form-group">
 
-        <label>EMAIL ADDRESS</label>
+        <label>
+          {t('register.email')}
+        </label>
 
         <div className="input-wrapper">
 
@@ -200,7 +186,9 @@ export default function RegisterForm({ role }) {
 
           <input
             type="email"
-            placeholder="mohamed@email.com"
+            placeholder={t(
+              'register.emailPlaceholder'
+            )}
             value={formData.email}
             onChange={(e) =>
               setFormData({
@@ -215,10 +203,11 @@ export default function RegisterForm({ role }) {
 
       </div>
 
-
       <div className="form-group">
 
-        <label>PASSWORD</label>
+        <label>
+          {t('register.password')}
+        </label>
 
         <div className="input-wrapper">
 
@@ -228,7 +217,9 @@ export default function RegisterForm({ role }) {
 
           <input
             type="password"
-            placeholder="•••••••••"
+            placeholder={t(
+              'register.passwordPlaceholder'
+            )}
             value={formData.password}
             onChange={(e) =>
               setFormData({
@@ -243,27 +234,23 @@ export default function RegisterForm({ role }) {
         </div>
 
         <small>
-          Minimum 9 characters, including an uppercase
-          letter, lowercase letter, and number.
+          {t('register.passwordRequirements')}
         </small>
 
       </div>
-
 
       <button
         type="submit"
         className="submit-btn"
         disabled={loading}
       >
-
         {loading
-          ? 'CREATING...'
-          : 'CREATE ACCOUNT'}
-
+          ? t('register.creating')
+          : t('register.createAccount')}
       </button>
 
     </form>
 
   );
-
 }
+

@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -36,39 +38,39 @@ export default function LoginForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.message || 'Login failed.');
+        setError(
+          data.message || t('login.failed')
+        );
         return;
       }
 
-      // Store logged-in user in AuthContext
       setUser(data.user);
 
       console.log('Logged in user:', data.user);
 
-      // Redirect based on role
-      setUser(data.user);
+      const routes = {
+        PLAYER: '/player',
+        SCOUT: '/scout'
+      };
 
-const routes = {
-  PLAYER: '/player',
-  SCOUT: '/scout'
-};
+      const destination = routes[data.user.role];
 
-const destination = routes[data.user.role];
+      if (!destination) {
+        setError(t('login.invalidRole'));
+        return;
+      }
 
-if (!destination) {
-  setError('Invalid user role.');
-  return;
-}
-
-navigate(destination, {
-  replace: true
-});
+      navigate(destination, {
+        replace: true
+      });
 
     } catch (error) {
 
       console.error('Login error:', error);
 
-      setError('Unable to connect to the server.');
+      setError(
+        t('errors.serverConnection')
+      );
 
     } finally {
 
@@ -81,14 +83,20 @@ navigate(destination, {
     <form onSubmit={handleSubmit}>
 
       <div className="form-group">
-        <label>EMAIL ADDRESS</label>
+
+        <label>
+          {t('login.email')}
+        </label>
 
         <div className="input-wrapper">
-          <span className="input-icon">✉</span>
+
+          <span className="input-icon">
+            ✉
+          </span>
 
           <input
             type="email"
-            placeholder="james@gmail.com"
+            placeholder={t('login.emailPlaceholder')}
             value={formData.email}
             onChange={(e) =>
               setFormData({
@@ -98,18 +106,26 @@ navigate(destination, {
             }
             required
           />
+
         </div>
+
       </div>
 
       <div className="form-group">
-        <label>PASSWORD</label>
+
+        <label>
+          {t('login.password')}
+        </label>
 
         <div className="input-wrapper">
-          <span className="input-icon">🔒</span>
+
+          <span className="input-icon">
+            🔒
+          </span>
 
           <input
             type="password"
-            placeholder="••••••••"
+            placeholder={t('login.passwordPlaceholder')}
             value={formData.password}
             onChange={(e) =>
               setFormData({
@@ -119,7 +135,9 @@ navigate(destination, {
             }
             required
           />
+
         </div>
+
       </div>
 
       {error && (
@@ -133,9 +151,12 @@ navigate(destination, {
         className="submit-btn"
         disabled={loading}
       >
-        {loading ? 'SIGNING IN...' : 'SIGN IN'}
+        {loading
+          ? t('login.signingIn')
+          : t('login.signIn')}
       </button>
 
     </form>
   );
 }
+
