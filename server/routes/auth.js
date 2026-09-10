@@ -1,6 +1,12 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import pool from '../db.js';
+import {
+  normalizeEmail,
+  isValidEmail,
+  isValidPassword,
+  isValidName
+} from '../validation/authValidation.js';
 
 const router = express.Router();
 
@@ -22,13 +28,39 @@ router.post('/register', async (req, res) => {
 
 
   // 1. Check required fields
-  if (!firstName || !lastName || !email || !password || !role) {
-    return res.status(400).json({
-      message: 'All fields are required.'
-    });
-  }
 
+if (
+  !firstName ||
+  !lastName ||
+  !email ||
+  !password ||
+  !role
+) {
+  return res.status(400).json({
+    message: 'All fields are required.'
+  });
+}
+// 2. Validate names
 
+if (!isValidName(firstName)) {
+  return res.status(400).json({
+    message: 'First name must be between 2 and 50 characters.'
+  });
+}
+
+if (!isValidName(lastName)) {
+  return res.status(400).json({
+    message: 'Last name must be between 2 and 50 characters.'
+  });
+}
+
+const normalizedEmail = normalizeEmail(email);
+
+if (!isValidEmail(normalizedEmail)) {
+  return res.status(400).json({
+    message: 'Please enter a valid email address.'
+  });
+}
   // 2. Only PLAYER and SCOUT can register
   if (!['PLAYER', 'SCOUT'].includes(role)) {
     return res.status(400).json({
@@ -37,17 +69,14 @@ router.post('/register', async (req, res) => {
   }
 
 
-  // 3. Password strength
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{9,}$/;
+  // 4. Password strength
 
-  if (!passwordRegex.test(password)) {
-    return res.status(400).json({
-      message:
-        'Password must be at least 9 characters long and contain at least one uppercase letter, one lowercase letter, and one number.'
-    });
-  }
-
+if (!isValidPassword(password)) {
+  return res.status(400).json({
+    message:
+      'Password must be at least 9 characters long and contain at least one uppercase letter, one lowercase letter, and one number.'
+  });
+}
 
   let client;
 
@@ -206,6 +235,7 @@ router.post('/login', async (req, res) => {
       message: 'Email and password are required.'
     });
   }
+  const normalizedEmail = email.trim().toLowerCase();
 
   try {
     // 2. Find user
@@ -213,7 +243,7 @@ router.post('/login', async (req, res) => {
       `SELECT id, first_name, last_name, email, password, role
        FROM USERS
        WHERE email = $1`,
-      [email]
+      [normalizedEmail]
     );
 
     // 3. User doesn't exist
@@ -288,6 +318,39 @@ router.get('/me', (req, res) => {
   return res.status(200).json({
     authenticated: true,
     user: req.session.user
+  });
+
+});
+
+// ============================================
+// LOGOUT
+// POST /api/auth/logout
+// ============================================
+
+router.post('/logout', (req, res) => {
+
+  if (!req.session) {
+    return res.status(200).json({
+      message: 'Logged out successfully.'
+    });
+  }
+
+  req.session.destroy((error) => {
+
+    if (error) {
+      console.error('Logout error:', error);
+
+      return res.status(500).json({
+        message: 'Could not log out.'
+      });
+    }
+
+    res.clearCookie('connect.sid');
+
+    return res.status(200).json({
+      message: 'Logged out successfully.'
+    });
+
   });
 
 });

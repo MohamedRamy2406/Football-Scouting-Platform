@@ -1,5 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-
+import {
+  getCurrentUser,
+  logoutUser
+} from '../api/authApi.js';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
@@ -13,20 +16,7 @@ export function AuthProvider({ children }) {
 
       try {
 
-        const response = await fetch(
-          'http://localhost:5000/api/auth/me',
-          {
-            credentials: 'include'
-          }
-        );
-
-        if (!response.ok) {
-          setUser(null);
-          return;
-        }
-
-        const data = await response.json();
-
+        const { response, data } = await getCurrentUser();
         if (data.authenticated) {
           setUser(data.user);
         } else {
@@ -44,18 +34,43 @@ export function AuthProvider({ children }) {
 
       }
 
+
     };
 
     checkSession();
 
   }, []);
+  const logout = async () => {
+
+  try {
+
+    const { response } = await logoutUser();
+
+    if (!response.ok) {
+      console.error('Logout failed.');
+      return false;
+    }
+
+    setUser(null);
+
+    return true;
+
+  } catch (error) {
+
+    console.error('Logout error:', error);
+
+    return false;
+
+  }
+};
 
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
-        loading
+        loading,
+        logout
       }}
     >
       {children}

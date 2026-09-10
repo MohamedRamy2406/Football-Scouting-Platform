@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
+import API_BASE_URL from '../api/client.js';
+import { registerUser } from '../api/authApi.js';
 
 export default function RegisterForm({ role }) {
 
@@ -28,25 +30,10 @@ export default function RegisterForm({ role }) {
 
     try {
 
-      const response = await fetch(
-        'http://localhost:5000/api/auth/register',
-        {
-          method: 'POST',
-
-          headers: {
-            'Content-Type': 'application/json'
-          },
-
-          credentials: 'include',
-
-          body: JSON.stringify({
-            ...formData,
-            role
-          })
-        }
-      );
-
-      const data = await response.json();
+      const { response, data } = await registerUser({
+  ...formData,
+  role
+});
 
       if (!response.ok) {
 

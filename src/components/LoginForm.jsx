@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext.jsx';
+import API_BASE_URL from '../api/client.js';
+import { loginUser } from '../api/authApi.js';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -23,19 +25,7 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        'http://localhost:5000/api/auth/login',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-          body: JSON.stringify(formData)
-        }
-      );
-
-      const data = await response.json();
+      const { response, data } = await loginUser(formData);
 
       if (!response.ok) {
         setError(
