@@ -1,0 +1,843 @@
+/* =========================================================
+   ACHIEVEMENTS SECTION
+========================================================= */
+
+.achievements-section {
+  width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ADD ACHIEVEMENT BUTTON
+========================================================= */
+
+.achievements-section > button,
+.add-achievement-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 36px;
+
+  padding: 8px 14px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(34, 217, 120, 0.30);
+  border-radius: 8px;
+
+  background: rgba(34, 217, 120, 0.06);
+  color: #22d978;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+
+.achievements-section > button:hover,
+.add-achievement-btn:hover {
+  background: rgba(34, 217, 120, 0.12);
+
+  border-color: rgba(34, 217, 120, 0.55);
+
+  box-shadow:
+    0 4px 12px rgba(34, 217, 120, 0.06);
+
+  transform: translateY(-1px);
+}
+
+
+.achievements-section > button:active,
+.add-achievement-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   ACHIEVEMENT LIST
+========================================================= */
+
+.achievements-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT CARD
+========================================================= */
+
+.achievement-item {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 17px;
+
+  border: 1px solid #252d31;
+  border-radius: 11px;
+
+  background: #0f1315;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.achievement-item:hover {
+  background: #111719;
+
+  border-color: #303a3f;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ACHIEVEMENT DATE
+========================================================= */
+
+.achievement-date {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: #68736d;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT TITLE
+========================================================= */
+
+.achievement-item h3 {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 7px 0 0;
+
+  font-size: 15px;
+  line-height: 1.45;
+
+  font-weight: 700;
+
+  color: #e7ece9;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  white-space: normal;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT DESCRIPTION
+========================================================= */
+
+.achievement-item p {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 8px 0 0;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+  font-weight: 400;
+
+  color: #8c9690;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  white-space: normal;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT ACTIONS
+========================================================= */
+
+.achievement-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 15px;
+
+  padding-top: 12px;
+
+  border-top: 1px solid #252d31;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EDIT / DELETE BUTTONS
+========================================================= */
+
+.achievement-actions button {
+  flex: 0 0 auto;
+
+  min-width: 60px;
+  min-height: 31px;
+
+  padding: 6px 11px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+.achievement-actions button:first-child {
+  background: transparent;
+
+  color: #aeb7b2;
+
+  border: 1px solid #30383c;
+}
+
+
+.achievement-actions button:first-child:hover {
+  background: rgba(34, 217, 120, 0.07);
+
+  border-color: #22d978;
+
+  color: #22d978;
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.achievement-actions button:last-child {
+  background: rgba(255, 80, 80, 0.05);
+
+  color: #d97878;
+
+  border: 1px solid rgba(255, 90, 90, 0.25);
+}
+
+
+.achievement-actions button:last-child:hover {
+  background: rgba(255, 80, 80, 0.10);
+
+  border-color: rgba(255, 90, 90, 0.50);
+
+  color: #ff8585;
+}
+
+
+.achievement-actions button:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================================================
+   ACHIEVEMENT FORM
+========================================================= */
+
+.achievement-form {
+  width: 100%;
+  min-width: 0;
+
+  margin: 0 0 18px;
+
+  padding: 18px;
+
+  border: 1px solid #252d31;
+  border-radius: 11px;
+
+  background: #0d1113;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM TITLE
+========================================================= */
+
+.achievement-form h3 {
+  margin: 0 0 18px;
+
+  color: #e8eeeb;
+
+  font-size: 15px;
+  line-height: 1.4;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.achievement-form-group {
+  width: 100%;
+  min-width: 0;
+
+  margin-bottom: 15px;
+
+  box-sizing: border-box;
+}
+
+
+.achievement-form-group:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FORM LABEL
+========================================================= */
+
+.achievement-form label {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-bottom: 6px;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  font-weight: 800;
+
+  color: #8c9690;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.achievement-form input,
+.achievement-form textarea,
+.achievement-form select {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  padding: 10px 12px;
+
+  border: 1px solid #2a3236;
+  border-radius: 8px;
+
+  background: #151a1d;
+
+  color: #e8eeeb;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.achievement-form input:focus,
+.achievement-form textarea:focus,
+.achievement-form select:focus {
+  border-color: #22d978;
+
+  background: #171d20;
+
+  box-shadow:
+    0 0 0 3px rgba(34, 217, 120, 0.08);
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.achievement-form textarea {
+  min-height: 105px;
+
+  resize: vertical;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.achievement-form input::placeholder,
+.achievement-form textarea::placeholder {
+  color: #59635f;
+}
+
+
+/* =========================================================
+   CHARACTER COUNTERS
+========================================================= */
+
+.achievement-character-count {
+  display: flex;
+
+  justify-content: flex-end;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 5px;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  color: #59635f;
+
+  box-sizing: border-box;
+}
+
+
+.achievement-character-count.near-limit {
+  color: #d97706;
+}
+
+
+.achievement-character-count.at-limit {
+  color: #dc2626;
+}
+
+
+/* Support common counter class names */
+
+.achievement-form .character-count,
+.achievement-form .char-count,
+.achievement-form .character-counter {
+  display: flex;
+
+  justify-content: flex-end;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 5px;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  color: #59635f;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.achievement-form-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 18px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
+
+.achievement-form-actions button {
+  min-height: 35px;
+
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+.achievement-form-actions button[type='submit'] {
+  background: #22d978;
+
+  color: #07100b;
+
+  border: 1px solid #22d978;
+}
+
+
+.achievement-form-actions button[type='submit']:hover {
+  background: #35e487;
+
+  border-color: #35e487;
+
+  box-shadow:
+    0 4px 10px rgba(34, 217, 120, 0.12);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.achievement-form-actions button[type='button'] {
+  background: transparent;
+
+  color: #aeb7b2;
+
+  border: 1px solid #30383c;
+}
+
+
+.achievement-form-actions button[type='button']:hover {
+  background: #181e21;
+
+  border-color: #4a555a;
+
+  color: #dce2df;
+}
+
+
+/* =========================================================
+   DISABLED BUTTONS
+========================================================= */
+
+.achievement-actions button:disabled,
+.achievement-form-actions button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   FORM ERROR
+========================================================= */
+
+.achievement-form-error {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 7px;
+
+  padding: 9px 11px;
+
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 8px;
+
+  background: rgba(255, 80, 80, 0.08);
+
+  color: #ff8585;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.achievements-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 150px;
+
+  padding: 25px 20px;
+
+  border: 1px dashed #2a3236;
+  border-radius: 11px;
+
+  background: rgba(15, 19, 21, 0.45);
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+
+.achievements-empty p {
+  max-width: 400px;
+
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+  color: #69736e;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .achievements-list {
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+
+  .achievements-section > button,
+  .add-achievement-btn {
+    width: 100%;
+
+    margin-bottom: 15px;
+  }
+
+
+  .achievement-item {
+    padding: 15px;
+
+    border-radius: 10px;
+  }
+
+
+  .achievement-form {
+    padding: 15px;
+
+    border-radius: 10px;
+  }
+
+
+  .achievement-item h3 {
+    font-size: 14px;
+
+    line-height: 1.45;
+  }
+
+
+  .achievement-item p {
+    margin-top: 7px;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+  }
+
+
+  .achievement-actions {
+    margin-top: 14px;
+
+    padding-top: 11px;
+
+    gap: 7px;
+  }
+
+
+  .achievement-actions button {
+    min-width: 57px;
+
+    padding: 6px 10px;
+  }
+
+
+  .achievement-form-actions {
+    gap: 7px;
+  }
+
+
+  .achievement-form-actions button {
+    flex: 1 1 auto;
+
+    min-width: 100px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .achievement-item {
+    padding: 13px;
+  }
+
+
+  .achievement-form {
+    padding: 13px;
+  }
+
+
+  .achievement-actions {
+    align-items: stretch;
+  }
+
+
+  .achievement-actions button {
+    flex: 1 1 auto;
+
+    min-width: 0;
+  }
+
+
+  .achievement-form-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .achievement-form-actions button {
+    width: 100%;
+  }
+}

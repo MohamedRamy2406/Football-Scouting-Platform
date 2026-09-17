@@ -1,0 +1,27 @@
+.profile-card {
+  padding: 24px;
+
+  background: #121619;
+
+  border: 1px solid #252b2f;
+
+  border-radius: 16px;
+  box-sizing: border-box;
+max-width: 100%;
+}
+
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.card-heading h2 {
+  margin: 7px 0 0;
+
+  font-size: 18px;
+
+  letter-spacing: -0.3px;
+}

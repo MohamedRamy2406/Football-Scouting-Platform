@@ -1,12 +1,17 @@
 
 import { useState } from 'react';
+
 import { useTranslation } from 'react-i18next';
 
-import AuthTabs from '../components/AuthTabs';
-import AccountTypeSelector from '../components/AccountTypeSelector';
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
-import LanguageSelector from '../components/LanguageSelector';
+import AuthTabs from '../components/auth/AuthTabs.jsx';
+
+import AccountTypeSelector from '../components/auth/AccountTypeSelector.jsx';
+
+import LoginForm from '../components/auth/LoginForm.jsx';
+
+import RegisterForm from '../components/auth/RegisterForm.jsx';
+
+import LanguageSelector from '../components/common/LanguageSelector.jsx';
 
 export default function AuthPage() {
   const { t } = useTranslation();

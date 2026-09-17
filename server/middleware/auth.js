@@ -1,33 +1,70 @@
-import express from 'express';
+// ============================================
+// REQUIRE AUTHENTICATION
+// ============================================
 
-import {
-  register,
-  login
-} from '../controllers/authController.js';
+export function requireAuth(req, res, next) {
 
-const router = express.Router();
+  if (!req.session || !req.session.user) {
+    return res.status(401).json({
+      message: 'Authentication required.'
+    });
+  }
+
+  next();
+}
 
 
 // ============================================
-// REGISTER
-// POST /api/auth/register
+// REQUIRE ROLE
 // ============================================
 
-router.post(
-  '/register',
-  register
-);
+export function requireRole(...allowedRoles) {
+
+  return (req, res, next) => {
+
+    if (!req.session || !req.session.user) {
+      return res.status(401).json({
+        message: 'Authentication required.'
+      });
+    }
+
+    const userRole = req.session.user.role;
+
+    if (!allowedRoles.includes(userRole)) {
+      return res.status(403).json({
+        message: 'You do not have permission to perform this action.'
+      });
+    }
+
+    next();
+  };
+}
 
 
 // ============================================
-// LOGIN
-// POST /api/auth/login
+// REQUIRE PERMISSION
 // ============================================
 
-router.post(
-  '/login',
-  login
-);
+import { hasPermission } from '../permissions.js';
 
+export function requirePermission(permission) {
 
-export default router;
+  return (req, res, next) => {
+
+    if (!req.session || !req.session.user) {
+      return res.status(401).json({
+        message: 'Authentication required.'
+      });
+    }
+
+    const userRole = req.session.user.role;
+
+    if (!hasPermission(userRole, permission)) {
+      return res.status(403).json({
+        message: 'You do not have permission to perform this action.'
+      });
+    }
+
+    next();
+  };
+}

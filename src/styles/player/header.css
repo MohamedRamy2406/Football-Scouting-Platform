@@ -1,0 +1,685 @@
+/* ============================================
+   PLAYER PROFILE HEADER
+============================================ */
+
+.player-profile-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  padding: 36px 40px 32px;
+  background:
+    linear-gradient(
+      145deg,
+      #151a1d 0%,
+      #111518 55%,
+      #0e1214 100%
+    );
+  border: 1px solid #293136;
+  border-radius: 20px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+}
+
+
+/* ============================================
+   SUBTLE GREEN GLOW
+============================================ */
+
+.player-profile-header::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -220px;
+  left: -120px;
+  background: rgba(34, 217, 120, 0.08);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+
+/* ============================================
+   HEADER MAIN CONTENT
+============================================ */
+
+.player-header-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  width: 100%;
+}
+
+
+/* ============================================
+   PLAYER INFORMATION
+============================================ */
+
+.player-header-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+/* ============================================
+   PROFILE PHOTO
+============================================ */
+
+.player-avatar-wrapper {
+  position: relative;
+  width: 158px;
+  height: 158px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ============================================
+   AVATAR CONTAINER
+============================================ */
+
+.player-avatar-upload {
+  position: relative;
+  width: 142px;
+  height: 142px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(34, 217, 120, 0.75);
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      145deg,
+      #1b2225,
+      #0d1113
+    );
+  box-shadow:
+    0 0 0 5px rgba(34, 217, 120, 0.055),
+    0 0 0 8px rgba(34, 217, 120, 0.025),
+    0 12px 30px rgba(0, 0, 0, 0.35);
+  overflow: visible;
+}
+
+
+/* ============================================
+   PHOTO BUTTON
+============================================ */
+
+.player-avatar-photo-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+
+.player-avatar-photo-button:disabled {
+  cursor: default;
+}
+
+
+.player-avatar-photo-button:not(:disabled):hover {
+  transform: scale(1.015);
+}
+
+
+.player-avatar-photo-button:focus-visible {
+  outline: 2px solid #22d978;
+  outline-offset: 4px;
+}
+
+
+/* ============================================
+   AVATAR FRAME
+============================================ */
+
+.player-avatar-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+/* ============================================
+   PROFILE PHOTO
+============================================ */
+
+.player-avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border: none;
+  border-radius: 50%;
+  background: #171b1e;
+}
+
+
+/* ============================================
+   EMPTY AVATAR
+============================================ */
+
+.player-avatar-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #22d978;
+  font-size: 34px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(34, 217, 120, 0.10),
+      #111619 70%
+    );
+}
+
+
+/* ============================================
+   PHOTO HOVER OVERLAY
+============================================ */
+
+.avatar-hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+
+.player-avatar-photo-button:hover .avatar-hover-overlay {
+  opacity: 1;
+}
+
+
+/* ============================================
+   CAMERA UPLOAD BUTTON
+============================================ */
+
+.avatar-camera-button {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid #111518;
+  border-radius: 50%;
+  background: #22d978;
+  color: #07110b;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.avatar-camera-button:hover:not(:disabled) {
+  transform: scale(1.08);
+  background: #35e98b;
+}
+
+
+.avatar-camera-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+
+/* ============================================
+   PLAYER NAME
+============================================ */
+
+.player-profile-name {
+  margin: 0;
+  color: #f4f7f5;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+}
+
+
+/* ============================================
+   PLAYER POSITIONS
+============================================ */
+
+.player-profile-positions {
+  margin-top: 9px;
+  color: #b9c1bd;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+/* ============================================
+   CURRENT CLUB / ACADEMY
+============================================ */
+
+.player-profile-club {
+  margin-top: 7px;
+  color: #8f9994;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+
+/* ============================================
+   EDIT PROFILE BUTTON
+============================================ */
+
+.player-edit-button {
+  margin-top: 18px;
+  min-width: 130px;
+  padding: 9px 20px;
+  border: 1px solid #39433f;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #f4f7f5;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.player-edit-button:hover {
+  background: rgba(34, 217, 120, 0.10);
+  border-color: rgba(34, 217, 120, 0.40);
+  transform: translateY(-1px);
+}
+
+
+.player-edit-button:focus-visible {
+  outline: 2px solid #22d978;
+  outline-offset: 3px;
+}
+
+
+/* ============================================
+   ABOUT ME / INSTAGRAM-STYLE BIO
+============================================ */
+
+.player-header-about {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #293136;
+}
+
+
+.player-header-about-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+
+.player-header-about-heading .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #22d978;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+
+.player-header-about-heading h2 {
+  margin: 0;
+  color: #f4f7f5;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+
+.player-header-about-content {
+  max-width: 760px;
+}
+
+
+.player-header-about-content p {
+  margin: 0;
+  color: #b9c1bd;
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+.player-header-about-content .empty-profile-text {
+  color: #727d77;
+  font-style: italic;
+}
+
+
+/* ============================================
+   PHOTO VIEWER
+============================================ */
+
+.profile-photo-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  animation:
+    profile-photo-viewer-fade-in
+    0.2s ease
+    both;
+}
+
+
+.profile-photo-viewer-content {
+  position: relative;
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation:
+    profile-photo-viewer-image-in
+    0.2s ease
+    both;
+}
+
+
+.profile-photo-viewer-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.65);
+}
+
+
+/* ============================================
+   PHOTO VIEWER CLOSE BUTTON
+============================================ */
+
+.profile-photo-viewer-close {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 10000;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(20, 24, 26, 0.85);
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.profile-photo-viewer-close:hover {
+  background: rgba(34, 217, 120, 0.15);
+  border-color: rgba(34, 217, 120, 0.5);
+  transform: scale(1.05);
+}
+
+
+.profile-photo-viewer-close:focus-visible {
+  outline: 2px solid #22d978;
+  outline-offset: 3px;
+}
+
+
+/* ============================================
+   PHOTO VIEWER ANIMATIONS
+============================================ */
+
+@keyframes profile-photo-viewer-fade-in {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes profile-photo-viewer-image-in {
+
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* ============================================
+   RESPONSIVE HEADER
+============================================ */
+
+@media (max-width: 900px) {
+
+  .player-profile-header {
+    padding: 32px 28px 28px;
+  }
+
+  .player-header-main {
+    gap: 30px;
+  }
+
+  .player-profile-name {
+    font-size: 30px;
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .player-profile-header {
+    padding: 28px 22px 26px;
+  }
+
+  .player-header-main {
+    align-items: center;
+    gap: 24px;
+  }
+
+  .player-avatar-wrapper {
+    width: 130px;
+    height: 130px;
+  }
+
+  .player-avatar-upload {
+    width: 116px;
+    height: 116px;
+  }
+
+  .player-profile-name {
+    font-size: 27px;
+  }
+
+  .player-header-about {
+    margin-top: 28px;
+    padding-top: 20px;
+  }
+
+  .profile-photo-viewer {
+    padding: 20px;
+  }
+
+  .profile-photo-viewer-image {
+    max-width: 94vw;
+    max-height: 80vh;
+    border-radius: 8px;
+  }
+
+  .profile-photo-viewer-close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 27px;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .player-profile-header {
+    padding: 26px 18px 24px;
+  }
+
+  .player-header-main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .player-header-info {
+    width: 100%;
+    align-items: center;
+  }
+
+  .player-avatar-wrapper {
+    width: 122px;
+    height: 122px;
+  }
+
+  .player-avatar-upload {
+    width: 108px;
+    height: 108px;
+  }
+
+  .player-profile-name {
+    font-size: 25px;
+    letter-spacing: -0.5px;
+  }
+
+  .player-profile-positions {
+    margin-top: 7px;
+    font-size: 13px;
+  }
+
+  .player-profile-club {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .player-edit-button {
+    margin-top: 15px;
+    min-width: 125px;
+  }
+
+  .player-header-about {
+    margin-top: 24px;
+    padding-top: 18px;
+  }
+
+  .player-header-about-heading {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .player-header-about-content {
+    text-align: center;
+  }
+
+}
+
+
+@media (max-width: 380px) {
+
+  .player-profile-header {
+    padding: 22px 14px 22px;
+  }
+
+  .player-profile-name {
+    font-size: 23px;
+  }
+
+  .player-avatar-wrapper {
+    width: 112px;
+    height: 112px;
+  }
+
+  .player-avatar-upload {
+    width: 100px;
+    height: 100px;
+  }
+
+  .player-header-about-content p {
+    font-size: 12px;
+  }
+
+}

@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import AuthPage from './pages/AuthPage';
-import PlayerProfile from './pages/PlayerProfile';
-import ScoutProfile from './pages/ScoutProfile';
-import ProtectedRoute from './components/protectedRoute';
+import AuthPage from './pages/AuthPage.jsx';
+import PlayerProfile from './pages/PlayerProfile.jsx';
+import ScoutProfile from './pages/ScoutProfile.jsx';
 
+import ProtectedRoute from './components/common/protectedRoute.jsx';
 function App() {
   return (
     <Routes>

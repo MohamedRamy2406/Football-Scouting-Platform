@@ -1,0 +1,104 @@
+/* ============================================
+   EMPTY / LOADING / ERROR
+============================================ */
+
+.empty-section {
+  padding: 35px 20px;
+
+  text-align: center;
+
+  color: #69736e;
+}
+
+.empty-section span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 25px;
+}
+
+.empty-section h3 {
+  margin: 0 0 5px;
+
+  color: #cbd2ce;
+
+  font-size: 14px;
+}
+
+.empty-section p {
+  margin: 0;
+
+  font-size: 12px;
+}
+
+.empty-section.compact {
+  padding: 20px;
+}
+
+.player-page-state {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #090b0d;
+
+  color: #fff;
+}
+
+.player-loading,
+.player-error {
+  text-align: center;
+}
+
+.player-spinner {
+  width: 35px;
+  height: 35px;
+
+  margin: 0 auto 20px;
+
+  border: 3px solid #26302b;
+
+  border-top-color: #22d978;
+
+  border-radius: 50%;
+
+  animation: player-spin 0.8s linear infinite;
+}
+
+.player-loading h2,
+.player-error h2 {
+  margin-bottom: 8px;
+}
+
+.player-loading p,
+.player-error p {
+  color: #7f8984;
+}
+
+.player-error-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  color: #ff6666;
+
+  background: rgba(255, 80, 80, 0.1);
+}
+
+@keyframes player-spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}

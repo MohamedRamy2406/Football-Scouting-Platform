@@ -1,0 +1,140 @@
+/* =========================================================
+   FOOTBALL INFORMATION
+========================================================= */
+
+.football-info-list {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   INFORMATION ROW
+========================================================= */
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #22282c;
+
+  box-sizing: border-box;
+}
+
+
+/* Remove divider from final row */
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.info-row span {
+  flex: 0 1 auto;
+
+  min-width: 0;
+  max-width: 50%;
+
+  color: #7f8984;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   VALUE
+========================================================= */
+
+.info-row strong {
+  flex: 0 1 auto;
+
+  min-width: 0;
+  max-width: 60%;
+
+  color: #e5ebe7;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  text-align: right;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.info-row:hover span {
+  color: #929d97;
+}
+
+.info-row:hover strong {
+  color: #22d978;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .info-row {
+    gap: 14px;
+    padding: 11px 0;
+  }
+
+  .info-row span {
+    font-size: 10px;
+  }
+
+  .info-row strong {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .info-row {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .info-row span {
+    max-width: 45%;
+  }
+
+  .info-row strong {
+    max-width: 55%;
+    font-size: 11px;
+  }
+}

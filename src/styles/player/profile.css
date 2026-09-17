@@ -1,0 +1,358 @@
+/* =========================================================
+   PLAYER PROFILE PAGE
+========================================================= */
+
+.player-profile-page {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #0b0f10;
+  color: #e8eeeb;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   PROFILE TABS
+========================================================= */
+
+.player-profile-tabs {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid #252b2f;
+  border-bottom: 1px solid #252b2f;
+  background: #0f1315;
+}
+
+.player-profile-tab {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 180px;
+  min-height: 52px;
+  padding: 0 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #68736d;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.player-profile-tab:hover {
+  background: rgba(255, 255, 255, 0.015);
+  color: #aeb7b2;
+}
+
+.player-profile-tab.active {
+  color: #e8eeeb;
+}
+
+.player-profile-tab.active::after {
+  content: '';
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: #22d978;
+}
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.player-profile-tab-content {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 32px 50px;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   INFO TAB
+   ORDER:
+   1. PLAYER DETAILS
+   2. CLUB HISTORY
+   3. ACHIEVEMENTS
+========================================================= */
+
+.player-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+/* =========================================================
+   PLAYER DETAILS
+========================================================= */
+
+.player-info-football {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #121619;
+  border: 1px solid #252b2f;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   CLUB HISTORY
+========================================================= */
+
+.player-info-club-history {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.player-info-achievements {
+  width: 100%;
+  min-width: 0;
+  margin-top: 0;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #121619;
+  border: 1px solid #252b2f;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
+
+.player-profile-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  padding: 50px 25px;
+  box-sizing: border-box;
+  border: 1px dashed #2a3236;
+  border-radius: 14px;
+  background: #121619;
+  text-align: center;
+}
+
+.player-profile-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(34, 217, 120, 0.07);
+  font-size: 25px;
+}
+
+.player-profile-empty-state h2 {
+  margin: 0 0 8px;
+  color: #dce3df;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.player-profile-empty-state p {
+  max-width: 450px;
+  margin: 0;
+  color: #69736e;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.player-profile-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  color: #8c9690;
+  font-size: 13px;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.player-profile-error {
+  width: min(600px, calc(100% - 40px));
+  margin: 100px auto;
+  padding: 18px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 80, 80, 0.08);
+  color: #ff8585;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   GLOBAL PROFILE OVERFLOW PROTECTION
+========================================================= */
+
+.player-profile-page,
+.player-profile-page *,
+.player-profile-tab-content {
+  box-sizing: border-box;
+}
+
+.player-profile-page img {
+  max-width: 100%;
+}
+
+.player-profile-page h1,
+.player-profile-page h2,
+.player-profile-page h3,
+.player-profile-page p,
+.player-profile-page span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .player-profile-tab-content {
+    padding: 24px 22px 45px;
+  }
+
+  .player-content-grid {
+    gap: 16px;
+  }
+
+  .player-info-football {
+    padding: 20px;
+  }
+
+  .player-info-achievements {
+    padding: 20px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .player-profile-tabs {
+    justify-content: stretch;
+  }
+
+  .player-profile-tab {
+    min-height: 48px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+
+  .player-profile-tab.active::after {
+    left: 20%;
+    right: 20%;
+  }
+
+  .player-profile-tab-content {
+    padding: 20px 15px 40px;
+  }
+
+  .player-content-grid {
+    gap: 14px;
+  }
+
+  .player-info-football {
+    padding: 17px;
+    border-radius: 12px;
+  }
+
+  .player-info-achievements {
+    padding: 17px;
+    border-radius: 12px;
+  }
+
+  .player-profile-empty-state {
+    min-height: 260px;
+    padding: 40px 20px;
+    border-radius: 12px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .player-profile-tab {
+    min-height: 45px;
+    padding: 0 7px;
+    font-size: 9px;
+  }
+
+  .player-profile-tab-content {
+    padding: 17px 12px 35px;
+  }
+
+  .player-info-football {
+    padding: 15px;
+  }
+
+  .player-info-achievements {
+    padding: 15px;
+  }
+
+  .player-profile-empty-state {
+    min-height: 230px;
+    padding: 30px 15px;
+  }
+
+  .player-profile-empty-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .player-profile-empty-state h2 {
+    font-size: 15px;
+  }
+
+  .player-profile-empty-state p {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   LANGUAGE SELECTOR MOBILE SPACE
+========================================================= */
+
+@media (max-width: 768px) {
+  .player-profile-page {
+    padding-top: 52px;
+  }
+}

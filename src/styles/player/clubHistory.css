@@ -1,0 +1,1050 @@
+/* =========================================================
+   CLUB HISTORY — INSTAGRAM-STYLE PROFILE SECTION
+========================================================= */
+
+.club-history-section {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 22px;
+  box-sizing: border-box;
+
+  background: #121619;
+  border: 1px solid #252b2f;
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.club-history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  gap: 16px;
+}
+
+.club-history-title {
+  min-width: 0;
+  flex: 1;
+}
+
+.club-history-title h2 {
+  max-width: 100%;
+  margin: 0;
+
+  color: #e8eeeb;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.add-club-history-btn {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 36px;
+  padding: 0 13px;
+
+  border: 1px solid rgba(34, 217, 120, 0.30);
+  border-radius: 8px;
+
+  background: rgba(34, 217, 120, 0.06);
+  color: #22d978;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.add-club-history-btn:hover {
+  background: rgba(34, 217, 120, 0.12);
+  border-color: rgba(34, 217, 120, 0.55);
+  transform: translateY(-1px);
+}
+
+.add-club-history-btn:active {
+  transform: translateY(0);
+}
+
+.add-club-history-btn:focus-visible {
+  outline: 2px solid #22d978;
+  outline-offset: 2px;
+}
+
+.add-club-history-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: #22d978;
+  color: #07100b;
+
+  font-size: 14px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.club-history-form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin: 18px 0 20px;
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  background: #0d1113;
+  border: 1px solid #252b2f;
+  border-radius: 11px;
+
+  overflow: hidden;
+}
+
+.club-history-form-header {
+  margin-bottom: 18px;
+}
+
+.club-history-form-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #22d978;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.club-history-form-header h3 {
+  margin: 0;
+
+  color: #e8eeeb;
+
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   FORM GROUPS
+========================================================= */
+
+.club-history-form-group {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.club-history-form-group label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #8c9690;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.club-history-form-group input {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 41px;
+
+  padding: 0 11px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #2a3236;
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #151a1d;
+  color: #e8eeeb;
+
+  font-family: inherit;
+  font-size: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.club-history-form-group input::placeholder {
+  color: #59635f;
+}
+
+.club-history-form-group input:hover {
+  border-color: #364044;
+}
+
+.club-history-form-group input:focus {
+  border-color: #22d978;
+
+  background: #171d20;
+
+  box-shadow:
+    0 0 0 3px rgba(34, 217, 120, 0.08);
+}
+
+.club-history-form-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.club-history-form-group input[type="date"] {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   CHARACTER COUNT
+========================================================= */
+
+.club-history-character-count {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #59635f;
+
+  font-size: 9px;
+  text-align: right;
+}
+
+
+/* =========================================================
+   DATE FIELDS
+========================================================= */
+
+.club-history-date-fields {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin: 15px 0;
+}
+
+
+/* =========================================================
+   STATISTICS FORM
+========================================================= */
+
+.club-history-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 9px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 15px;
+}
+
+
+/* =========================================================
+   FORM ERROR
+========================================================= */
+
+.club-history-form-error {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: 14px;
+  padding: 9px 11px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 8px;
+
+  background: rgba(255, 80, 80, 0.08);
+  color: #ff8585;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.club-history-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 18px;
+}
+
+.club-history-form-actions button {
+  min-height: 36px;
+  padding: 0 15px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.club-history-form-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+.club-history-save-btn {
+  border: 1px solid #22d978;
+
+  background: #22d978;
+  color: #07100b;
+}
+
+.club-history-save-btn:hover:not(:disabled) {
+  background: #35e487;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.club-history-cancel-btn {
+  border: 1px solid #30383c;
+
+  background: transparent;
+  color: #9ba49f;
+}
+
+.club-history-cancel-btn:hover:not(:disabled) {
+  border-color: #4a555a;
+
+  background: #181e21;
+  color: #dce2df;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.club-history-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 165px;
+
+  padding: 28px 20px;
+
+  box-sizing: border-box;
+
+  border: 1px dashed #2a3236;
+  border-radius: 11px;
+
+  background: rgba(15, 19, 21, 0.45);
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.club-history-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  margin-bottom: 11px;
+
+  border-radius: 50%;
+
+  background: rgba(34, 217, 120, 0.07);
+
+  font-size: 21px;
+}
+
+.club-history-empty h3 {
+  max-width: 100%;
+
+  margin: 0 0 6px;
+
+  color: #cbd2ce;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.club-history-empty p {
+  max-width: 400px;
+
+  margin: 0;
+
+  color: #69736e;
+
+  font-size: 11px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   CLUB HISTORY LIST
+========================================================= */
+
+.club-history-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CLUB ITEM
+========================================================= */
+
+.club-history-item {
+  display: flex;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  gap: 13px;
+
+  padding: 15px;
+
+  border: 1px solid #252d31;
+  border-radius: 11px;
+
+  background: #0f1315;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.club-history-item:hover {
+  border-color: #303a3f;
+  background: #111719;
+}
+
+
+/* =========================================================
+   CLUB ICON
+========================================================= */
+
+.club-history-club-icon {
+  flex: 0 0 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(34, 217, 120, 0.18);
+  border-radius: 9px;
+
+  background: rgba(34, 217, 120, 0.06);
+}
+
+.club-history-club-icon span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   CLUB CONTENT
+========================================================= */
+
+.club-history-content {
+  flex: 1 1 auto;
+
+  width: 0;
+  min-width: 0;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CLUB HEADER
+========================================================= */
+
+.club-history-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.club-history-club-info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.club-history-club-info h3 {
+  max-width: 100%;
+
+  margin: 0 0 4px;
+
+  color: #e7ece9;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.club-history-position {
+  display: block;
+
+  max-width: 100%;
+
+  color: #7e8983;
+
+  font-size: 10px;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.club-history-date {
+  flex: 0 1 auto;
+
+  max-width: 45%;
+
+  color: #22d978;
+
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.5;
+
+  text-align: right;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.club-history-date-separator {
+  margin: 0 4px;
+
+  color: #59635f;
+}
+
+
+/* =========================================================
+   STATISTICS DISPLAY
+========================================================= */
+
+.club-history-stats-display {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 13px;
+}
+
+.club-history-stat {
+  min-width: 0;
+
+  padding: 9px 7px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #242c30;
+  border-radius: 8px;
+
+  background: #151a1d;
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.club-history-stat strong {
+  display: block;
+
+  max-width: 100%;
+
+  color: #dce3df;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.club-history-stat span {
+  display: block;
+
+  max-width: 100%;
+
+  margin-top: 4px;
+
+  color: #68736d;
+
+  font-size: 8px;
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   ITEM ACTIONS
+========================================================= */
+
+.club-history-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 6px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin-top: 12px;
+}
+
+.club-history-actions button {
+  min-height: 30px;
+
+  padding: 0 11px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+.club-history-edit-btn {
+  border: 1px solid #30383c;
+
+  background: transparent;
+  color: #aeb7b2;
+}
+
+.club-history-edit-btn:hover {
+  border-color: #22d978;
+
+  background: rgba(34, 217, 120, 0.07);
+
+  color: #22d978;
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.club-history-delete-btn {
+  border: 1px solid rgba(255, 90, 90, 0.25);
+
+  background: rgba(255, 80, 80, 0.05);
+
+  color: #d97878;
+}
+
+.club-history-delete-btn:hover {
+  border-color: rgba(255, 90, 90, 0.5);
+
+  background: rgba(255, 80, 80, 0.1);
+
+  color: #ff8585;
+}
+
+
+/* =========================================================
+   GLOBAL OVERFLOW PROTECTION
+========================================================= */
+
+.club-history-section,
+.club-history-section *,
+.club-history-form,
+.club-history-item {
+  box-sizing: border-box;
+}
+
+.club-history-section h1,
+.club-history-section h2,
+.club-history-section h3,
+.club-history-section p,
+.club-history-section span,
+.club-history-section label,
+.club-history-section button,
+.club-history-section input {
+  max-width: 100%;
+}
+
+.club-history-section h1,
+.club-history-section h2,
+.club-history-section h3,
+.club-history-section p,
+.club-history-section span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .club-history-section {
+    padding: 20px;
+  }
+
+  .club-history-stats,
+  .club-history-stats-display {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .club-history-section {
+    padding: 17px;
+    border-radius: 12px;
+  }
+
+  .club-history-heading {
+    align-items: flex-start;
+  }
+
+  .club-history-title h2 {
+    font-size: 16px;
+  }
+
+  .club-history-form {
+    padding: 15px;
+  }
+
+  .club-history-date-fields {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .club-history-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .club-history-item {
+    gap: 11px;
+    padding: 14px;
+  }
+
+  .club-history-club-icon {
+    flex-basis: 36px;
+
+    width: 36px;
+    height: 36px;
+  }
+
+  .club-history-club-icon span {
+    font-size: 17px;
+  }
+
+  .club-history-item-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .club-history-date {
+    max-width: 100%;
+
+    text-align: left;
+  }
+
+  .club-history-stats-display {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .club-history-section {
+    padding: 14px;
+    border-radius: 11px;
+  }
+
+  .club-history-heading {
+    gap: 10px;
+  }
+
+  .club-history-title h2 {
+    font-size: 15px;
+  }
+
+  .section-label {
+    font-size: 9px;
+  }
+
+  .add-club-history-btn {
+    min-height: 34px;
+    padding: 0 10px;
+
+    font-size: 10px;
+  }
+
+  .add-club-history-icon {
+    width: 16px;
+    height: 16px;
+
+    font-size: 13px;
+  }
+
+  .club-history-form {
+    padding: 13px;
+  }
+
+  .club-history-stats {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .club-history-form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .club-history-form-actions button {
+    width: 100%;
+  }
+
+  .club-history-item {
+    gap: 9px;
+    padding: 12px;
+  }
+
+  .club-history-club-icon {
+    flex-basis: 34px;
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .club-history-club-icon span {
+    font-size: 16px;
+  }
+
+  .club-history-stats-display {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 6px;
+  }
+
+  .club-history-stat {
+    padding: 9px 5px;
+  }
+
+  .club-history-stat strong {
+    font-size: 14px;
+  }
+
+  .club-history-stat span {
+    font-size: 8px;
+  }
+
+  .club-history-actions {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 6px;
+  }
+
+  .club-history-actions button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .club-history-section {
+    padding: 11px;
+  }
+
+  .club-history-heading {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .add-club-history-btn {
+    width: 100%;
+  }
+
+  .club-history-item {
+    padding: 10px;
+  }
+
+  .club-history-club-icon {
+    flex-basis: 30px;
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .club-history-club-icon span {
+    font-size: 14px;
+  }
+
+  .club-history-stats-display {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+}

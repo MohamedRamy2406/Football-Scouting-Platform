@@ -1,0 +1,444 @@
+/* =========================================================
+   TABLETS
+   768px - 1023px
+========================================================= */
+
+@media (max-width: 1023px) {
+
+  .auth-container {
+    gap: 2.5rem;
+
+    padding: 2rem;
+  }
+
+  .auth-card {
+    max-width: 420px;
+
+    padding: 2rem;
+  }
+
+  .hero-section {
+    gap: 1.5rem;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLETS / LARGE PHONES
+   600px - 767px
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .auth-container {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    justify-content: flex-start;
+
+    min-height: 100vh;
+
+    /*
+      Leave a dedicated area at the top for the
+      fixed language selector.
+    */
+    padding: 5rem 1.5rem 1.5rem;
+
+    gap: 2rem;
+  }
+
+  .hero-section {
+    width: 100%;
+
+    text-align: center;
+
+    align-items: center;
+  }
+
+  .hero-description {
+    max-width: 600px;
+  }
+
+  .feature-cards {
+    width: 100%;
+
+    max-width: 600px;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .auth-card {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 2rem;
+  }
+
+  .auth-tabs {
+    justify-content: center;
+  }
+
+  /*
+    Keep the language selector inside its own top area
+    instead of allowing it to visually collide with content.
+  */
+  .language-selector {
+    top: 0.75rem;
+
+    right: 0.75rem;
+  }
+}
+
+
+/* =========================================================
+   PHONES
+   480px - 599px
+========================================================= */
+
+@media (max-width: 599px) {
+
+  .auth-container {
+    /*
+      Keep enough top space for the fixed language selector.
+    */
+    padding: 5rem 1rem 1rem;
+
+    gap: 1.5rem;
+  }
+
+  .hero-section {
+    gap: 1.25rem;
+  }
+
+  .brand-logo {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+
+    gap: 0.75rem;
+  }
+
+  .feature-card {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 1.5rem;
+
+    border-radius: 14px;
+  }
+
+  .auth-tabs {
+    gap: 1.5rem;
+
+    margin-bottom: 1.5rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-header p {
+    font-size: 0.8rem;
+  }
+
+  .account-selector {
+    gap: 0.5rem;
+  }
+
+  .role-btn {
+    padding: 0.85rem 0.4rem;
+  }
+
+  .language-selector {
+    top: 0.7rem;
+
+    right: 0.7rem;
+  }
+
+  .language-selector button {
+    font-size: 0.7rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   320px - 479px
+========================================================= */
+
+@media (max-width: 479px) {
+
+  /*
+    The previous version reduced this to 0.75rem,
+    which removed the top space needed by the
+    fixed language selector.
+
+    Keep a dedicated top area instead.
+  */
+  .auth-container {
+    padding:
+      5rem
+      0.75rem
+      0.75rem;
+
+    gap: 1rem;
+  }
+
+  .language-selector {
+    top: 0.65rem;
+
+    right: 0.65rem;
+  }
+
+  .brand-logo {
+    font-size: 1.25rem;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+
+    min-width: 28px;
+
+    font-size: 0.85rem;
+  }
+
+  .hero-description {
+    font-size: 0.82rem;
+  }
+
+  .feature-card {
+    padding: 0.9rem;
+  }
+
+  .feature-card h4 {
+    font-size: 0.85rem;
+  }
+
+  .feature-card p {
+    font-size: 0.75rem;
+  }
+
+  .auth-card {
+    padding: 1.15rem;
+
+    border-radius: 12px;
+  }
+
+  .auth-tabs {
+    gap: 1rem;
+  }
+
+  .tab-btn {
+    font-size: 0.75rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .form-header p {
+    font-size: 0.75rem;
+  }
+
+  .form-group label {
+    font-size: 0.7rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.85rem;
+
+    padding:
+      0.7rem
+      0.75rem
+      0.7rem
+      2.3rem;
+  }
+
+  .submit-btn {
+    font-size: 0.85rem;
+
+    padding: 0.75rem;
+  }
+
+  .name-fields {
+    flex-direction: column;
+
+    gap: 0;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+   Below 360px
+========================================================= */
+
+@media (max-width: 359px) {
+
+  .auth-container {
+    /*
+      Still reserve the language selector area.
+    */
+    padding:
+      5rem
+      0.5rem
+      0.5rem;
+  }
+
+  .auth-card {
+    padding: 1rem;
+  }
+
+  .account-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-tabs {
+    gap: 0.75rem;
+  }
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+  .auth-container {
+    min-height: auto;
+
+    align-items: flex-start;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-section {
+    gap: 1rem;
+  }
+
+  .feature-cards {
+    display: none;
+  }
+
+  .auth-card {
+    padding: 1.25rem;
+  }
+}
+
+
+/* =========================================================
+   BACKGROUND ANIMATIONS
+========================================================= */
+
+@keyframes footballMove {
+
+  0% {
+    transform:
+      translateX(0)
+      translateY(0)
+      rotate(0deg);
+  }
+
+  25% {
+    transform:
+      translateX(28vw)
+      translateY(12vh)
+      rotate(90deg);
+  }
+
+  50% {
+    transform:
+      translateX(55vw)
+      translateY(-4vh)
+      rotate(180deg);
+  }
+
+  75% {
+    transform:
+      translateX(78vw)
+      translateY(15vh)
+      rotate(270deg);
+  }
+
+  100% {
+    transform:
+      translateX(115vw)
+      translateY(0)
+      rotate(360deg);
+  }
+}
+
+
+@keyframes pitchMove {
+
+  0% {
+    transform:
+      perspective(600px)
+      rotateX(55deg)
+      scale(1.4)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(600px)
+      rotateX(55deg)
+      scale(1.4)
+      translateY(90px);
+  }
+
+  100% {
+    transform:
+      perspective(600px)
+      rotateX(55deg)
+      scale(1.4)
+      translateY(180px);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .auth-page::before,
+  .auth-page::after,
+  .feature-card,
+  .role-btn,
+  .submit-btn {
+    animation: none;
+
+    transition: none;
+  }
+}

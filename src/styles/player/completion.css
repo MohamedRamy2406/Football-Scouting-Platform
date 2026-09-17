@@ -1,0 +1,153 @@
+/* ============================================
+   HEADER COMPLETION
+============================================ */
+
+.player-header-completion {
+  width: 260px;
+
+  padding: 18px;
+
+  background: #101315;
+
+  border: 1px solid #272d31;
+
+  border-radius: 14px;
+}
+
+.completion-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  font-size: 11px;
+  color: #89928d;
+}
+
+.completion-header strong {
+  color: #22d978;
+}
+
+.completion-progress {
+  height: 7px;
+
+  overflow: hidden;
+
+  background: #272d30;
+
+  border-radius: 99px;
+}
+
+.completion-progress-bar {
+  height: 100%;
+
+  background: #22d978;
+
+  border-radius: inherit;
+
+  transition: width 0.4s ease;
+}
+
+.completion-status {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #a7b0ab;
+
+  font-size: 11px;
+}
+
+
+/* ============================================
+   PROFILE COMPLETION CARD
+============================================ */
+
+.profile-completion-card {
+  margin-top: 18px;
+
+  padding: 24px;
+
+  background: #101416;
+
+  border: 1px solid rgba(34, 217, 120, 0.35);
+
+  border-radius: 16px;
+}
+
+.completion-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e8eee9;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+.profile-completion-card p {
+  margin: 8px 0 0;
+
+  color: #8c9690;
+
+  font-size: 13px;
+}
+
+.completion-number {
+  text-align: right;
+}
+
+.completion-number strong {
+  display: block;
+
+  color: #22d978;
+
+  font-size: 24px;
+}
+
+.completion-number span {
+  color: #77817b;
+
+  font-size: 11px;
+}
+
+.large-progress {
+  height: 8px;
+
+  margin-top: 20px;
+
+  background: #252b2e;
+
+  border-radius: 99px;
+
+  overflow: hidden;
+}
+
+.large-progress-bar {
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #15bd68,
+    #35e98b
+  );
+
+  border-radius: inherit;
+}
+
+.completion-footer {
+  margin-top: 10px;
+
+  color: #7f8a84;
+
+  font-size: 11px;
+}

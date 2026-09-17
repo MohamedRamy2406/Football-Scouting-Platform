@@ -17,8 +17,8 @@ export function normalizeEmail(email) {
 
 export function isValidEmail(email) {
   const emailRegex =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
   return emailRegex.test(email);
 }
 

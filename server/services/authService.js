@@ -6,7 +6,7 @@ import {
   createPlayerProfile,
   createScoutProfile,
   getClient
-} from '../repositories/userRepository.js';
+} from '../repository/userRepository.js';
 
 
 // ============================================

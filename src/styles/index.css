@@ -1,0 +1,20 @@
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/global.css';
+
+@import './components/cards.css';
+@import './components/states.css';
+
+@import './auth/auth-page.css';
+@import './auth/auth-forms.css';
+@import './auth/auth-langauge.css';
+@import './auth/auth-responsive.css';
+
+@import './player/profile.css';
+@import './player/header.css';
+@import './player/completion.css';
+@import './player/information.css';
+@import './player/clubHistory.css';
+@import './player/achievements.css';
+@import './player/videos.css';
+@import './player/editProfile.css';

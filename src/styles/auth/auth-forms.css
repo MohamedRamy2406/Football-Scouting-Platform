@@ -1,0 +1,454 @@
+/* =========================================================
+   AUTH PAGE CONTAINER
+========================================================= */
+
+.auth-container {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+
+  width: 100%;
+  max-width: 1200px;
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding: 5rem 2rem 2rem;
+
+  gap: 4rem;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   LEFT HERO SECTION
+========================================================= */
+
+.hero-section {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  color: var(--color-white);
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+
+  background: var(--color-primary);
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--color-background);
+
+  font-weight: 900;
+}
+
+.hero-description {
+  color: var(--color-muted-light);
+
+  font-size: 1rem;
+  line-height: 1.6;
+
+  max-width: 480px;
+}
+
+.feature-cards {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+
+  margin-top: 1rem;
+}
+
+.feature-card {
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 12px;
+
+  padding: 1.25rem;
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-3px);
+}
+
+.feature-card h4 {
+  font-size: 0.95rem;
+
+  margin-bottom: 0.5rem;
+
+  color: var(--color-white);
+}
+
+.feature-card p {
+  font-size: 0.8rem;
+
+  color: var(--color-muted);
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   RIGHT AUTH CARD
+========================================================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+
+  background: rgba(18, 21, 28, 0.94);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 16px;
+
+  padding: 2.5rem;
+
+  box-shadow: var(--shadow-card);
+
+  /*
+     Slight backdrop blur makes the animated background
+     visible without interfering with readability.
+  */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   AUTH TABS
+========================================================= */
+
+.auth-tabs {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 2rem;
+
+  border-bottom: 1px solid var(--color-border);
+
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+
+  color: var(--color-muted);
+
+  font-weight: 600;
+  font-size: 0.85rem;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  padding-bottom: 0.75rem;
+
+  transition: color 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--color-white);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+}
+
+.tab-btn.active::after {
+  content: '';
+
+  position: absolute;
+
+  bottom: -1px;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background: var(--color-primary);
+
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
+.form-header h2 {
+  font-size: 1.5rem;
+
+  font-weight: 700;
+
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+
+  line-height: 1.5;
+
+  margin-bottom: 1.5rem;
+}
+
+
+/* =========================================================
+   ROLE SELECTOR
+========================================================= */
+
+.account-selector {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0.75rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.role-btn {
+  width: 100%;
+  min-width: 0;
+
+  background: var(--color-surface-light);
+
+  border: 1px solid var(--color-border-light);
+
+  border-radius: 10px;
+
+  padding: 1rem 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  color: var(--color-muted-light);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.role-btn:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+}
+
+.role-btn.selected {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary-dark);
+
+  color: var(--color-white);
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.4rem;
+
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+
+  font-weight: 600;
+
+  color: var(--color-muted-light);
+
+  letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+}
+
+.input-wrapper input {
+  width: 100%;
+  min-width: 0;
+
+  background: var(--color-surface-light);
+
+  border: 1px solid var(--color-border-light);
+
+  border-radius: 8px;
+
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+
+  color: var(--color-white);
+
+  font-size: 0.9rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 2px rgba(0, 255, 102, 0.08);
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 0.85rem;
+
+  color: var(--color-muted);
+
+  font-size: 0.9rem;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-btn {
+  width: 100%;
+
+  background: var(--color-primary);
+
+  color: var(--color-background);
+
+  font-weight: 700;
+
+  padding: 0.85rem;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+
+  cursor: pointer;
+
+  margin-top: 0.5rem;
+
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.error-message {
+  margin-bottom: 1rem;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+
+  color: var(--color-error);
+}
+
+
+/* =========================================================
+   SMALL TEXT
+========================================================= */
+
+small {
+  color: var(--color-muted);
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   NAME FIELDS
+========================================================= */
+
+.name-fields {
+  display: flex;
+
+  gap: 0.75rem;
+}
+
+.name-fields .form-group {
+  flex: 1;
+
+  min-width: 0;
+}

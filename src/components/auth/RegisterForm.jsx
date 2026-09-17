@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '../context/AuthContext.jsx';
-import API_BASE_URL from '../api/client.js';
-import { registerUser } from '../api/authApi.js';
+import { useAuth } from '../../context/AuthContext.jsx';
+import API_BASE_URL from '../../api/client.js';
+import { registerUser } from '../../api/authApi.js';
 
 export default function RegisterForm({ role }) {
 

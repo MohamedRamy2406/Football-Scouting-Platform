@@ -1,41 +1,139 @@
 import 'dotenv/config';
+
 import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
+
 import authRoutes from './routes/auth.js';
-import { errorHandler } from './middleware/errorHandler.js';
+import playerRoutes from './routes/player.js';
 
+import {
+  errorHandler
+} from './middleware/errorHandler.js';
+
+import achievementRoutes from './routes/achievement.js';
+import clubHistoryRoutes from './routes/clubHistory.js';
 const app = express();
-const PORT = process.env.PORT || 5000;
+app.use(express.static('public'));
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-}));
 
-app.use(express.json());
+const PORT =
+  process.env.PORT;
+
+// ============================================
+// CORS
+// ============================================
 
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+  cors({
 
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-      httpOnly: true,
-      secure: false,
-    },
+    origin:
+      process.env.FRONTEND_URL,
+
+    credentials: true,
+
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('Path2Pro API is running...');
-});
+// ============================================
+// JSON
+// ============================================
 
-app.use('/api/auth', authRoutes);
-app.use(errorHandler);
+app.use(
+  express.json()
+);
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// ============================================
+// SESSION
+// ============================================
+
+app.use(
+  session({
+
+    secret:
+      process.env.SESSION_SECRET,
+
+    resave:
+      false,
+
+    saveUninitialized:
+      false,
+
+    cookie: {
+
+      maxAge:
+        1000 * 60 * 60 * 24,
+
+      httpOnly:
+        true,
+
+      secure:
+        false,
+
+    },
+
+  })
+);
+
+// ============================================
+// API HEALTH CHECK
+// ============================================
+
+app.get(
+  '/',
+  (req, res) => {
+
+    res.send(
+      'Path2Pro API is running...'
+    );
+
+  }
+);
+
+// ============================================
+// AUTH ROUTES
+// ============================================
+
+app.use(
+  '/api/auth',
+  authRoutes
+);
+
+// ============================================
+// PLAYER ROUTES
+// ============================================
+
+app.use(
+  '/api/player',
+  playerRoutes
+);
+
+// ============================================
+// ERROR HANDLER
+// ============================================
+
+
+
+app.use(
+  '/api/player/achievements',
+  achievementRoutes
+);
+app.use('/api/club-history', clubHistoryRoutes);
+
+app.use(
+  errorHandler
+);
+// ============================================
+// START SERVER
+// ============================================
+
+app.listen(
+  PORT,
+  () => {
+
+    console.log(
+      `Server running on http://localhost:${PORT}`
+    );
+
+  }
+);
