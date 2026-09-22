@@ -92,22 +92,20 @@ export async function findPlayerProfileByUserId(client, userId) {
   );
 
   const videosResult = await client.query(
-    `SELECT
-       id,
-       player_id,
-       title,
-       description,
-       category,
-       video_url,
-       thumbnail_url,
-       duration,
-       upload_date,
-       visibility
-     FROM videos
-     WHERE player_id = $1
-     ORDER BY upload_date DESC NULLS LAST, id DESC`,
-    [profile.id]
-  );
+  `SELECT
+     id,
+     player_id,
+     title,
+     description,
+     category,
+     video_url,
+     duration,
+     upload_date
+   FROM videos
+   WHERE player_id = $1
+   ORDER BY upload_date DESC NULLS LAST, id DESC`,
+  [profile.id]
+);
 
   return {
     user,

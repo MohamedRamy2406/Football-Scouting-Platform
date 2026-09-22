@@ -1,3 +1,4 @@
+
 import API_BASE_URL from './client.js';
 
 // ============================================
@@ -20,6 +21,7 @@ export async function getPlayerProfile() {
     data
   };
 }
+
 
 // ============================================
 // UPDATE CURRENT PLAYER PROFILE
@@ -46,6 +48,7 @@ export async function updatePlayerProfile(profileData) {
   };
 }
 
+
 // ============================================
 // DELETE CURRENT PLAYER ACCOUNT
 // ============================================
@@ -67,8 +70,12 @@ export async function deletePlayerAccount() {
   };
 }
 
-export async function uploadPlayerPhoto(file) {
 
+// ============================================
+// UPLOAD PLAYER PROFILE PHOTO
+// ============================================
+
+export async function uploadPlayerPhoto(file) {
   const formData = new FormData();
 
   formData.append('profilePhoto', file);
@@ -90,9 +97,14 @@ export async function uploadPlayerPhoto(file) {
   };
 }
 
+
+// ============================================
+// GET CURRENT PLAYER ACHIEVEMENTS
+// ============================================
+
 export async function getPlayerAchievements() {
   const response = await fetch(
-    'http://localhost:5000/api/player/achievements',
+    `${API_BASE_URL}/api/player/achievements`,
     {
       method: 'GET',
       credentials: 'include'
@@ -108,11 +120,15 @@ export async function getPlayerAchievements() {
 }
 
 
+// ============================================
+// CREATE PLAYER ACHIEVEMENT
+// ============================================
+
 export async function createPlayerAchievement(
   achievement
 ) {
   const response = await fetch(
-    'http://localhost:5000/api/player/achievements',
+    `${API_BASE_URL}/api/player/achievements`,
     {
       method: 'POST',
       credentials: 'include',
@@ -132,12 +148,16 @@ export async function createPlayerAchievement(
 }
 
 
+// ============================================
+// UPDATE PLAYER ACHIEVEMENT
+// ============================================
+
 export async function updatePlayerAchievement(
   id,
   achievement
 ) {
   const response = await fetch(
-    `http://localhost:5000/api/player/achievements/${id}`,
+    `${API_BASE_URL}/api/player/achievements/${id}`,
     {
       method: 'PUT',
       credentials: 'include',
@@ -157,11 +177,15 @@ export async function updatePlayerAchievement(
 }
 
 
+// ============================================
+// DELETE PLAYER ACHIEVEMENT
+// ============================================
+
 export async function deletePlayerAchievement(
   id
 ) {
   const response = await fetch(
-    `http://localhost:5000/api/player/achievements/${id}`,
+    `${API_BASE_URL}/api/player/achievements/${id}`,
     {
       method: 'DELETE',
       credentials: 'include'
@@ -175,6 +199,7 @@ export async function deletePlayerAchievement(
     data
   };
 }
+
 
 // ============================================
 // GET CURRENT PLAYER CLUB HISTORY
@@ -277,3 +302,86 @@ export async function deletePlayerClubHistory(
     data
   };
 }
+
+
+// ============================================
+// GET CURRENT PLAYER VIDEOS
+// ============================================
+
+export async function getPlayerVideos() {
+  const response = await fetch(
+    `${API_BASE_URL}/api/player/videos`,
+    {
+      method: 'GET',
+      credentials: 'include'
+    }
+  );
+
+  const data = await response.json();
+
+  return {
+    response,
+    data
+  };
+}
+
+
+// ============================================
+// UPLOAD PLAYER VIDEO
+// ============================================
+
+export async function uploadPlayerVideo(
+  file,
+  title,
+  description,
+  category
+) {
+  const formData = new FormData();
+
+  formData.append('video', file);
+  formData.append('title', title);
+  formData.append('description', description);
+  formData.append('category', category);
+
+  const response = await fetch(
+    `${API_BASE_URL}/api/player/videos`,
+    {
+      method: 'POST',
+      credentials: 'include',
+      body: formData
+    }
+  );
+
+  const data = await response.json();
+
+  return {
+    response,
+    data
+  };
+}
+
+
+// ============================================
+// DELETE PLAYER VIDEO
+// ============================================
+
+export async function deletePlayerVideo(
+  id
+) {
+  const response = await fetch(
+    `${API_BASE_URL}/api/player/videos/${id}`,
+    {
+      method: 'DELETE',
+      credentials: 'include'
+    }
+  );
+
+  const data = await response.json();
+
+  return {
+    response,
+    data
+  };
+}
+
+

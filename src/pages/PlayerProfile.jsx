@@ -15,7 +15,7 @@ import ClubHistory from '../components/player/clubHistory.jsx';
 import Achievements from '../components/player/Achievements.jsx';
 import EditPlayerProfile from '../components/player/EditPlayerProfile.jsx';
 import LanguageSelector from '../components/common/LanguageSelector.jsx';
-
+import Videos from '../components/player/Videos.jsx';
 import { useTranslation } from 'react-i18next';
 
 
@@ -541,34 +541,12 @@ const PlayerProfile = () => {
           =================================================== */}
 
           {activeTab === 'videos' && (
-
-            <div className="player-profile-empty-state">
-
-              <div className="player-profile-empty-icon">
-                🎥
-              </div>
-
-
-              <h2>
-
-                {t(
-                  'playerProfile.emptyStates.videos.title'
-                )}
-
-              </h2>
-
-
-              <p>
-
-                {t(
-                  'playerProfile.emptyStates.videos.description'
-                )}
-
-              </p>
-
-            </div>
-
-          )}
+  <Videos
+    profileCompleted={
+      player.profileCompleted
+    }
+  />
+)}
 
 
           {/* ===================================================

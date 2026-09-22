@@ -1,3 +1,4 @@
+
 // ============================================
 // GLOBAL ERROR HANDLER
 // ============================================
@@ -18,6 +19,49 @@ export function errorHandler(error, req, res, next) {
 
   }
 
+    // ------------------------------------------
+  // Multer file size error
+  // ------------------------------------------
+
+  if (error.code === 'LIMIT_FILE_SIZE') {
+
+    return res.status(413).json({
+      message:
+        'Video file is too large. Maximum allowed size is 500 MB.'
+    });
+
+  }
+
+  // ------------------------------------------
+// Multer invalid file type error
+// ------------------------------------------
+
+if (
+  error.message ===
+  'Only MP4, MOV, and WebM videos are allowed.'
+) {
+
+  return res.status(400).json({
+    message:
+      'Only MP4, MOV, and WebM videos are allowed.'
+  });
+
+}
+
+  // ------------------------------------------
+  // Known application validation error
+  // ------------------------------------------
+
+  if (error.validationErrors) {
+
+    return res.status(
+      error.statusCode || 400
+    ).json({
+      message: error.message,
+      errors: error.validationErrors
+    });
+
+  }
 
   // ------------------------------------------
   // Known application error
@@ -31,7 +75,6 @@ export function errorHandler(error, req, res, next) {
 
   }
 
-
   // ------------------------------------------
   // Unknown error
   // ------------------------------------------
@@ -39,5 +82,5 @@ export function errorHandler(error, req, res, next) {
   return res.status(500).json({
     message: 'Internal server error.'
   });
-
 }
+

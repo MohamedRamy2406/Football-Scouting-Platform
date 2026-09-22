@@ -8,6 +8,8 @@ import {
   useTranslation
 } from 'react-i18next';
 
+import API_BASE_URL from '../../api/client.js';
+
 
 function formatPosition(position, t) {
 
@@ -82,7 +84,7 @@ export default function PlayerProfileHeader({
       ? (
           photo.startsWith('http')
             ? photo
-            : `http://localhost:5000${photo}`
+            : `${API_BASE_URL}${photo}`
         )
       : '';
 

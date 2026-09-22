@@ -656,6 +656,12 @@ const translations = {
         },
 
 
+        /*
+         * ========================================
+         * VIDEOS
+         * ========================================
+         */
+
         videos: {
 
           label:
@@ -680,7 +686,127 @@ const translations = {
 
 
           highlight:
-            'Highlight'
+            'Highlight',
+
+
+          myVideos:
+            'My Videos',
+
+          loading:
+            'Loading your videos...',
+
+          deleting:
+            'Deleting...',
+
+          delete:
+            'Delete',
+
+          deleteConfirm:
+            'Are you sure you want to delete this video?',
+
+
+          success: {
+
+            uploaded:
+              'Video uploaded successfully.',
+
+            deleted:
+              'Video deleted successfully.'
+
+          },
+
+
+          errors: {
+
+            loadFailed:
+              'Failed to load your videos.',
+
+            uploadFailed:
+              'Failed to upload the video.',
+
+            deleteFailed:
+              'Failed to delete the video.',
+
+            invalidType:
+              'Only MP4, MOV, and WebM videos are allowed.',
+
+            fileTooLarge:
+              'Video file is too large. Maximum allowed size is 500 MB.',
+
+            tooLong:
+              'Video duration cannot exceed 5 minutes.',
+
+            fileRequired:
+              'Please select a video file.',
+
+            titleRequired:
+              'Video title is required.',
+
+            categoryRequired:
+              'Please select a video category.',
+
+            profileIncomplete:
+              'Please complete your profile before uploading videos.'
+
+          },
+
+
+          form: {
+
+            file:
+              'Video file',
+
+            fileHint:
+              'MP4, MOV, or WebM. Maximum 500 MB and 5 minutes.',
+
+            title:
+              'Video title',
+
+            titlePlaceholder:
+              'Enter a title for your video',
+
+            description:
+              'Description',
+
+            descriptionPlaceholder:
+              'Describe this video...',
+
+            category:
+              'Category',
+
+            categoryPlaceholder:
+              'Select a category',
+
+            upload:
+              'Upload Video',
+
+            uploading:
+              'Uploading...'
+
+          },
+
+
+          categories: {
+
+            MATCH:
+              'Match',
+
+            TRAINING:
+              'Training',
+
+            SOLO_TRAINING:
+              'Solo Training',
+
+            SKILLS:
+              'Skills',
+
+            HIGHLIGHTS:
+              'Highlights',
+
+            OTHER:
+              'Other'
+
+          }
 
         },
 
@@ -1367,6 +1493,12 @@ const translations = {
         },
 
 
+        /*
+         * ========================================
+         * VIDEOS
+         * ========================================
+         */
+
         videos: {
 
           label:
@@ -1391,7 +1523,127 @@ const translations = {
 
 
           highlight:
-            'أبرز اللقطات'
+            'أبرز اللقطات',
+
+
+          myVideos:
+            'فيديوهاتي',
+
+          loading:
+            'جاري تحميل فيديوهاتك...',
+
+          deleting:
+            'جاري الحذف...',
+
+          delete:
+            'حذف',
+
+          deleteConfirm:
+            'هل أنت متأكد أنك تريد حذف هذا الفيديو؟',
+
+
+          success: {
+
+            uploaded:
+              'تم رفع الفيديو بنجاح.',
+
+            deleted:
+              'تم حذف الفيديو بنجاح.'
+
+          },
+
+
+          errors: {
+
+            loadFailed:
+              'فشل تحميل فيديوهاتك.',
+
+            uploadFailed:
+              'فشل رفع الفيديو.',
+
+            deleteFailed:
+              'فشل حذف الفيديو.',
+
+            invalidType:
+              'يسمح فقط بفيديوهات MP4 وMOV وWebM.',
+
+            fileTooLarge:
+              'حجم الفيديو كبير جدًا. الحد الأقصى هو 500 ميجابايت.',
+
+            tooLong:
+              'لا يمكن أن تتجاوز مدة الفيديو 5 دقائق.',
+
+            fileRequired:
+              'يرجى اختيار ملف فيديو.',
+
+            titleRequired:
+              'عنوان الفيديو مطلوب.',
+
+            categoryRequired:
+              'يرجى اختيار تصنيف الفيديو.',
+
+            profileIncomplete:
+              'يرجى إكمال ملفك الشخصي قبل رفع الفيديوهات.'
+
+          },
+
+
+          form: {
+
+            file:
+              'ملف الفيديو',
+
+            fileHint:
+              'MP4 أو MOV أو WebM. الحد الأقصى 500 ميجابايت و5 دقائق.',
+
+            title:
+              'عنوان الفيديو',
+
+            titlePlaceholder:
+              'أدخل عنوان الفيديو',
+
+            description:
+              'الوصف',
+
+            descriptionPlaceholder:
+              'اكتب وصفًا لهذا الفيديو...',
+
+            category:
+              'التصنيف',
+
+            categoryPlaceholder:
+              'اختر التصنيف',
+
+            upload:
+              'رفع الفيديو',
+
+            uploading:
+              'جاري الرفع...'
+
+          },
+
+
+          categories: {
+
+            MATCH:
+              'مباراة',
+
+            TRAINING:
+              'تدريب',
+
+            SOLO_TRAINING:
+              'تدريب فردي',
+
+            SKILLS:
+              'مهارات',
+
+            HIGHLIGHTS:
+              'أبرز اللقطات',
+
+            OTHER:
+              'أخرى'
+
+          }
 
         },
 

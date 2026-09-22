@@ -6,7 +6,7 @@ import session from 'express-session';
 
 import authRoutes from './routes/auth.js';
 import playerRoutes from './routes/player.js';
-
+import videoRoutes from './routes/video.js';
 import {
   errorHandler
 } from './middleware/errorHandler.js';
@@ -119,6 +119,11 @@ app.use(
   achievementRoutes
 );
 app.use('/api/club-history', clubHistoryRoutes);
+
+app.use(
+  '/api/player/videos',
+  videoRoutes
+);
 
 app.use(
   errorHandler
