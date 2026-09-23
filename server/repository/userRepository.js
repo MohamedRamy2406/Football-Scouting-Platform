@@ -1,16 +1,24 @@
 import pool from '../db.js';
 
 
-// ============================================
-// FIND USER BY EMAIL
-// ============================================
+// ==============================
+// Find User By Email
+// ==============================
 
-export async function findUserByEmail(client, email) {
-
-  const result = await client.query(
-    `SELECT id, first_name, last_name, email, password, role
-     FROM users
-     WHERE email = $1`,
+export async function findUserByEmail(email) {
+  const result = await pool.query(
+    `
+    SELECT
+      id,
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      role
+    FROM users
+    WHERE email = $1
+    `,
     [email]
   );
 
@@ -18,31 +26,92 @@ export async function findUserByEmail(client, email) {
 }
 
 
-// ============================================
-// CREATE USER
-// ============================================
+// ==============================
+// Find User By ID
+// ==============================
+
+export async function findUserById(userId) {
+  const result = await pool.query(
+    `
+    SELECT
+      id,
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      role
+    FROM users
+    WHERE id = $1
+    `,
+    [userId]
+  );
+
+  return result.rows[0] || null;
+}
+
+
+// ==============================
+// Update User Password
+// ==============================
+
+export async function updateUserPassword(
+  userId,
+  hashedPassword
+) {
+  const result = await pool.query(
+    `
+    UPDATE users
+    SET password = $1
+    WHERE id = $2
+    RETURNING id
+    `,
+    [
+      hashedPassword,
+      userId
+    ]
+  );
+
+  return result.rows[0] || null;
+}
+
+
+// ==============================
+// Create User
+// ==============================
 
 export async function createUser(
-  client,
-  {
-    firstName,
-    lastName,
-    email,
-    password,
-    role
-  }
+  firstName,
+  lastName,
+  email,
+  hashedPassword,
+  phone,
+  role
 ) {
-
-  const result = await client.query(
-    `INSERT INTO users
-      (first_name, last_name, email, password, role)
-     VALUES ($1, $2, $3, $4, $5)
-     RETURNING id, first_name, last_name, email, role`,
+  const result = await pool.query(
+    `
+    INSERT INTO users (
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      role
+    )
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING
+      id,
+      first_name,
+      last_name,
+      email,
+      role
+    `,
     [
       firstName,
       lastName,
       email,
-      password,
+      hashedPassword,
+      phone,
       role
     ]
   );
@@ -51,39 +120,38 @@ export async function createUser(
 }
 
 
-// ============================================
-// CREATE PLAYER PROFILE
-// ============================================
+// ==============================
+// Create Player Profile
+// ==============================
 
-export async function createPlayerProfile(client, userId) {
-
-  await client.query(
-    `INSERT INTO player_profiles (user_id)
-     VALUES ($1)`,
+export async function createPlayerProfile(userId) {
+  const result = await pool.query(
+    `
+    INSERT INTO player_profiles (user_id)
+    VALUES ($1)
+    RETURNING *
+    `,
     [userId]
   );
+
+  return result.rows[0];
 }
 
 
-// ============================================
-// CREATE SCOUT PROFILE
-// ============================================
+// ==============================
+// Create Scout Profile
+// ==============================
 
-export async function createScoutProfile(client, userId) {
-
-  await client.query(
-    `INSERT INTO scout_profiles (user_id)
-     VALUES ($1)`,
+export async function createScoutProfile(userId) {
+  const result = await pool.query(
+    `
+    INSERT INTO scout_profiles (user_id)
+    VALUES ($1)
+    RETURNING *
+    `,
     [userId]
   );
-}
 
-
-// ============================================
-// GET DATABASE CLIENT
-// ============================================
-
-export async function getClient() {
-
-  return pool.connect();
+  
+  return result.rows[0];
 }

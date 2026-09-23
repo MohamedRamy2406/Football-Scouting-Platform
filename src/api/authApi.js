@@ -74,3 +74,24 @@ export async function logoutUser() {
     data
   };
 }
+
+export async function changePassword(passwordData) {
+  const response = await fetch(
+    `${API_BASE_URL}/api/auth/password`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(passwordData)
+    }
+  );
+
+  const data = await response.json();
+
+  return {
+    response,
+    data
+  };
+}

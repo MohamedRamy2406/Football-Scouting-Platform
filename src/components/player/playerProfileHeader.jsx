@@ -1,3 +1,4 @@
+
 import {
   useEffect,
   useRef,
@@ -37,17 +38,20 @@ function formatPosition(position, t) {
 export default function PlayerProfileHeader({
   player,
   onEdit,
+  onSettings,
   onPhotoSelected,
   uploadingPhoto
 }) {
 
-  const { t } =
-    useTranslation();
+  const {
+    t
+  } = useTranslation();
 
 
-  const [photoViewerOpen,
-    setPhotoViewerOpen] =
-    useState(false);
+  const [
+    photoViewerOpen,
+    setPhotoViewerOpen
+  ] = useState(false);
 
 
   const position =
@@ -73,11 +77,9 @@ export default function PlayerProfileHeader({
     useRef(null);
 
 
-  /*
-   * ============================================
-   * PHOTO URL
-   * ============================================
-   */
+  /* =========================================================
+     PHOTO URL
+  ========================================================= */
 
   const photoUrl =
     photo
@@ -89,11 +91,9 @@ export default function PlayerProfileHeader({
       : '';
 
 
-  /*
-   * ============================================
-   * OPEN PHOTO VIEWER
-   * ============================================
-   */
+  /* =========================================================
+     OPEN PHOTO VIEWER
+  ========================================================= */
 
   function openPhotoViewer() {
 
@@ -107,11 +107,9 @@ export default function PlayerProfileHeader({
   }
 
 
-  /*
-   * ============================================
-   * CLOSE PHOTO VIEWER
-   * ============================================
-   */
+  /* =========================================================
+     CLOSE PHOTO VIEWER
+  ========================================================= */
 
   function closePhotoViewer() {
 
@@ -120,11 +118,9 @@ export default function PlayerProfileHeader({
   }
 
 
-  /*
-   * ============================================
-   * ESCAPE KEY
-   * ============================================
-   */
+  /* =========================================================
+     ESCAPE KEY
+  ========================================================= */
 
   useEffect(() => {
 
@@ -173,11 +169,9 @@ export default function PlayerProfileHeader({
   }, [photoViewerOpen]);
 
 
-  /*
-   * ============================================
-   * OPEN UPLOAD PICKER
-   * ============================================
-   */
+  /* =========================================================
+     OPEN UPLOAD PICKER
+  ========================================================= */
 
   function openUploadPicker() {
 
@@ -191,11 +185,9 @@ export default function PlayerProfileHeader({
   }
 
 
-  /*
-   * ============================================
-   * PHOTO FILE SELECTED
-   * ============================================
-   */
+  /* =========================================================
+     PHOTO FILE SELECTED
+  ========================================================= */
 
   function handlePhotoFileChange(event) {
 
@@ -219,27 +211,25 @@ export default function PlayerProfileHeader({
 
     <>
 
-
-      {/* ========================================
+      {/* =====================================================
           PROFILE HEADER
-      ======================================== */}
+      ===================================================== */}
 
       <section className="player-profile-header">
 
 
-        {/* ======================================
+        {/* ===================================================
             TOP PROFILE AREA
-        ====================================== */}
+        =================================================== */}
 
         <div className="player-header-main">
 
 
-          {/* ====================================
+          {/* =================================================
               PROFILE PHOTO
-          ==================================== */}
+          ================================================= */}
 
           <div className="player-avatar-wrapper">
-
 
             <div className="player-avatar-upload">
 
@@ -259,7 +249,6 @@ export default function PlayerProfileHeader({
                       )
                 }
               >
-
 
                 <div className="player-avatar-frame">
 
@@ -301,16 +290,14 @@ export default function PlayerProfileHeader({
 
                   )}
 
-
                 </div>
-
 
               </button>
 
 
-              {/* =================================
+              {/* =============================================
                   CAMERA / UPLOAD BUTTON
-              ================================= */}
+              ============================================= */}
 
               <button
                 type="button"
@@ -318,6 +305,9 @@ export default function PlayerProfileHeader({
                 onClick={openUploadPicker}
                 disabled={uploadingPhoto}
                 aria-label={t(
+                  'playerProfile.header.uploadProfilePhoto'
+                )}
+                title={t(
                   'playerProfile.header.uploadProfilePhoto'
                 )}
               >
@@ -340,23 +330,48 @@ export default function PlayerProfileHeader({
               }
             />
 
-
           </div>
 
 
-          {/* ====================================
+          {/* =================================================
               PLAYER IDENTITY
-          ==================================== */}
+          ================================================= */}
 
           <div className="player-header-info">
 
 
-            <h1 className="player-profile-name">
+            {/* =================================================
+                PLAYER NAME + SETTINGS
+            ================================================= */}
 
-              {player.firstName}{' '}
-              {player.lastName}
+            <div className="player-name-row">
 
-            </h1>
+              <h1 className="player-profile-name">
+
+                {player.firstName}{' '}
+                {player.lastName}
+
+              </h1>
+
+
+              <button
+                type="button"
+                className="player-settings-button"
+                onClick={onSettings}
+                aria-label={t(
+                  'playerProfile.header.settings'
+                )}
+                title={t(
+                  'playerProfile.header.settings'
+                )}
+                aria-haspopup="dialog"
+              >
+
+                ⚙
+
+              </button>
+
+            </div>
 
 
             <div className="player-profile-positions">
@@ -377,32 +392,41 @@ export default function PlayerProfileHeader({
             </div>
 
 
-            {/* ==================================
-                EDIT PROFILE
-            ================================== */}
+            {/* ===============================================
+                HEADER ACTIONS
+            =============================================== */}
 
-            <button
-              type="button"
-              className="player-edit-button"
-              onClick={onEdit}
-            >
+            <div className="player-header-actions">
 
-              {t(
-                'playerProfile.header.editProfile'
-              )}
 
-            </button>
+              {/* =============================================
+                  EDIT PROFILE
+              ============================================= */}
+
+              <button
+                type="button"
+                className="player-edit-button"
+                onClick={onEdit}
+              >
+
+                {t(
+                  'playerProfile.header.editProfile'
+                )}
+
+              </button>
+
+
+            </div>
 
 
           </div>
 
-
         </div>
 
 
-        {/* ======================================
+        {/* ===================================================
             INSTAGRAM-STYLE BIO
-        ====================================== */}
+        =================================================== */}
 
         <div className="player-header-about">
 
@@ -454,7 +478,6 @@ export default function PlayerProfileHeader({
 
             )}
 
-
           </div>
 
 
@@ -464,9 +487,9 @@ export default function PlayerProfileHeader({
       </section>
 
 
-      {/* ========================================
+      {/* =====================================================
           PROFILE PHOTO VIEWER
-      ======================================== */}
+      ===================================================== */}
 
       {photoViewerOpen && photo && (
 
@@ -521,3 +544,4 @@ export default function PlayerProfileHeader({
   );
 
 }
+

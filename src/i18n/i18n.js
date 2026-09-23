@@ -6,6 +6,15 @@ import translations from './translations.js';
 const savedLanguage =
   localStorage.getItem('language') || 'en';
 
+function updateDocumentLanguage(language) {
+  document.documentElement.lang = language;
+
+  document.documentElement.dir =
+    language === 'ar'
+      ? 'rtl'
+      : 'ltr';
+}
+
 i18n
   .use(initReactI18next)
   .init({
@@ -23,12 +32,16 @@ i18n
     }
   });
 
-document.documentElement.lang = savedLanguage;
+/*
+ * Keep the HTML language and direction synchronized
+ * whenever the user changes the application language.
+ */
+i18n.on('languageChanged', (language) => {
+  localStorage.setItem('language', language);
 
-document.documentElement.dir =
-  savedLanguage === 'ar'
-    ? 'rtl'
-    : 'ltr';
+  updateDocumentLanguage(language);
+});
 
+updateDocumentLanguage(savedLanguage);
 
-    export default i18n;
+export default i18n;

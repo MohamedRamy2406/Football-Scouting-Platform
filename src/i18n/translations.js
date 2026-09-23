@@ -215,6 +215,9 @@ const translations = {
           editProfile:
             'Edit Profile',
 
+          settings:
+            'Settings',
+
           profileStrength:
             'PROFILE STRENGTH',
 
@@ -600,6 +603,152 @@ const translations = {
 
           connectionError:
             'Could not connect to the server.'
+
+        },
+
+
+        /* =====================================================
+           SETTINGS
+        ===================================================== */
+
+        settings: {
+
+          title:
+            'Settings',
+
+          description:
+            'Manage your account security and account actions.',
+
+          close:
+            'Close settings',
+
+
+          password: {
+
+            title:
+              'Change Password',
+
+            description:
+              'Update your password to keep your account secure.',
+
+            currentPassword:
+              'Current Password',
+
+            currentPasswordPlaceholder:
+              'Enter your current password',
+
+            newPassword:
+              'New Password',
+
+            newPasswordPlaceholder:
+              'Enter your new password',
+
+            confirmPassword:
+              'Confirm New Password',
+
+            confirmPasswordPlaceholder:
+              'Re-enter your new password',
+
+            passwordRequirements:
+              'Minimum 9 characters, including an uppercase letter, lowercase letter, and number.',
+
+            changePassword:
+              'Change Password',
+
+            changing:
+              'Changing Password...',
+
+            success:
+              'Your password has been changed successfully.',
+
+            currentRequired:
+              'Please enter your current password.',
+
+            newRequired:
+              'Please enter a new password.',
+
+            confirmRequired:
+              'Please confirm your new password.',
+
+            tooShort:
+              'New password must be at least 9 characters long.',
+
+            uppercaseRequired:
+              'New password must contain at least one uppercase letter.',
+
+            lowercaseRequired:
+              'New password must contain at least one lowercase letter.',
+
+            numberRequired:
+              'New password must contain at least one number.',
+
+            passwordsDoNotMatch:
+              'New passwords do not match.',
+
+            failed:
+              'Could not change your password.',
+
+            connectionError:
+              'Could not connect to the server.'
+
+          },
+
+
+          account: {
+
+            title:
+              'Account',
+
+            description:
+              'Manage your Path2Pro account.',
+
+            logout:
+              'Log Out',
+
+            loggingOut:
+              'Logging Out...',
+
+            logoutSuccess:
+              'You have been logged out successfully.',
+
+            logoutFailed:
+              'Could not log out. Please try again.',
+
+
+            deleteAccount:
+              'Delete Account',
+
+            deleteAccountDescription:
+              'Permanently delete your account and your account data.',
+
+            deletingAccount:
+              'Deleting Account...',
+
+            deleteConfirmTitle:
+              'Delete Account?',
+
+            deleteConfirmDescription:
+              'Are you sure you want to permanently delete your account? This action cannot be undone.',
+
+            deleteConfirmWarning:
+              'All of your profile information, videos, achievements, club history, and account data will be permanently deleted.',
+
+            confirmDelete:
+              'Yes, Delete My Account',
+
+            cancelDelete:
+              'Cancel',
+
+            deleteSuccess:
+              'Your account has been deleted successfully.',
+
+            deleteFailed:
+              'Could not delete your account.',
+
+            connectionError:
+              'Could not connect to the server.'
+
+          }
 
         },
 
@@ -1052,6 +1201,9 @@ const translations = {
           editProfile:
             'تعديل الملف الشخصي',
 
+          settings:
+            'الإعدادات',
+
           profileStrength:
             'اكتمال الملف الشخصي',
 
@@ -1437,6 +1589,152 @@ const translations = {
 
           connectionError:
             'تعذر الاتصال بالخادم.'
+
+        },
+
+
+        /* =====================================================
+           SETTINGS
+        ===================================================== */
+
+        settings: {
+
+          title:
+            'الإعدادات',
+
+          description:
+            'إدارة أمان حسابك وإجراءات الحساب.',
+
+          close:
+            'إغلاق الإعدادات',
+
+
+          password: {
+
+            title:
+              'تغيير كلمة المرور',
+
+            description:
+              'حدّث كلمة المرور الخاصة بك للحفاظ على أمان حسابك.',
+
+            currentPassword:
+              'كلمة المرور الحالية',
+
+            currentPasswordPlaceholder:
+              'أدخل كلمة المرور الحالية',
+
+            newPassword:
+              'كلمة المرور الجديدة',
+
+            newPasswordPlaceholder:
+              'أدخل كلمة المرور الجديدة',
+
+            confirmPassword:
+              'تأكيد كلمة المرور الجديدة',
+
+            confirmPasswordPlaceholder:
+              'أعد إدخال كلمة المرور الجديدة',
+
+            passwordRequirements:
+              'يجب أن تتكون كلمة المرور من 9 أحرف على الأقل، وتتضمن حرفًا كبيرًا وحرفًا صغيرًا ورقمًا.',
+
+            changePassword:
+              'تغيير كلمة المرور',
+
+            changing:
+              'جاري تغيير كلمة المرور...',
+
+            success:
+              'تم تغيير كلمة المرور بنجاح.',
+
+            currentRequired:
+              'يرجى إدخال كلمة المرور الحالية.',
+
+            newRequired:
+              'يرجى إدخال كلمة مرور جديدة.',
+
+            confirmRequired:
+              'يرجى تأكيد كلمة المرور الجديدة.',
+
+            tooShort:
+              'يجب أن تتكون كلمة المرور الجديدة من 9 أحرف على الأقل.',
+
+            uppercaseRequired:
+              'يجب أن تحتوي كلمة المرور الجديدة على حرف كبير واحد على الأقل.',
+
+            lowercaseRequired:
+              'يجب أن تحتوي كلمة المرور الجديدة على حرف صغير واحد على الأقل.',
+
+            numberRequired:
+              'يجب أن تحتوي كلمة المرور الجديدة على رقم واحد على الأقل.',
+
+            passwordsDoNotMatch:
+              'كلمتا المرور غير متطابقتين.',
+
+            failed:
+              'تعذر تغيير كلمة المرور.',
+
+            connectionError:
+              'تعذر الاتصال بالخادم.'
+
+          },
+
+
+          account: {
+
+            title:
+              'الحساب',
+
+            description:
+              'إدارة حسابك على Path2Pro.',
+
+            logout:
+              'تسجيل الخروج',
+
+            loggingOut:
+              'جاري تسجيل الخروج...',
+
+            logoutSuccess:
+              'تم تسجيل خروجك بنجاح.',
+
+            logoutFailed:
+              'تعذر تسجيل الخروج. يرجى المحاولة مرة أخرى.',
+
+
+            deleteAccount:
+              'حذف الحساب',
+
+            deleteAccountDescription:
+              'حذف حسابك وبيانات حسابك بشكل نهائي.',
+
+            deletingAccount:
+              'جاري حذف الحساب...',
+
+            deleteConfirmTitle:
+              'حذف الحساب؟',
+
+            deleteConfirmDescription:
+              'هل أنت متأكد أنك تريد حذف حسابك نهائيًا؟ لا يمكن التراجع عن هذا الإجراء.',
+
+            deleteConfirmWarning:
+              'سيتم حذف جميع معلومات ملفك الشخصي وفيديوهاتك وإنجازاتك وتاريخ أنديتك وبيانات حسابك نهائيًا.',
+
+            confirmDelete:
+              'نعم، احذف حسابي',
+
+            cancelDelete:
+              'إلغاء',
+
+            deleteSuccess:
+              'تم حذف حسابك بنجاح.',
+
+            deleteFailed:
+              'تعذر حذف حسابك.',
+
+            connectionError:
+              'تعذر الاتصال بالخادم.'
+
+          }
 
         },
 

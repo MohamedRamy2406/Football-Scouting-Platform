@@ -2,203 +2,189 @@ import bcrypt from 'bcrypt';
 
 import {
   findUserByEmail,
+  findUserById,
   createUser,
   createPlayerProfile,
   createScoutProfile,
-  getClient
+  updateUserPassword
 } from '../repository/userRepository.js';
 
 
-// ============================================
-// NORMALIZE EMAIL
-// ============================================
+// ==============================
+// Normalize Email
+// ==============================
 
 function normalizeEmail(email) {
-
   return email.trim().toLowerCase();
-
 }
 
 
-// ============================================
-// REGISTER USER
-// ============================================
+// ==============================
+// Register User
+// ==============================
 
 export async function registerUser({
   firstName,
   lastName,
   email,
   password,
+  phone,
   role
 }) {
+  const normalizedEmail = normalizeEmail(email);
 
-  const client = await getClient();
+  const existingUser = await findUserByEmail(
+    normalizedEmail
+  );
 
-  try {
-
-    await client.query('BEGIN');
-
-
-    // Normalize input
-
-    const normalizedFirstName = firstName.trim();
-    const normalizedLastName = lastName.trim();
-    const normalizedEmail = normalizeEmail(email);
-
-
-    // Check whether email already exists
-
-    const existingUser = await findUserByEmail(
-      client,
-      normalizedEmail
+  if (existingUser) {
+    const error = new Error(
+      'Email already exists.'
     );
 
-
-    if (existingUser) {
-
-      await client.query('ROLLBACK');
-
-      return {
-        success: false,
-        status: 400,
-        message: 'Email already registered.'
-      };
-
-    }
-
-
-    // Hash password
-
-    const hashedPassword = await bcrypt.hash(
-      password,
-      12
-    );
-
-
-    // Create user
-
-    const newUser = await createUser(
-      client,
-      {
-        firstName: normalizedFirstName,
-        lastName: normalizedLastName,
-        email: normalizedEmail,
-        password: hashedPassword,
-        role
-      }
-    );
-
-
-    // Create correct profile
-
-    if (role === 'PLAYER') {
-
-      await createPlayerProfile(
-        client,
-        newUser.id
-      );
-
-    }
-
-
-    if (role === 'SCOUT') {
-
-      await createScoutProfile(
-        client,
-        newUser.id
-      );
-
-    }
-
-
-    // Commit transaction
-
-    await client.query('COMMIT');
-
-
-    return {
-      success: true,
-      user: newUser
-    };
-
-
-  } catch (error) {
-
-    await client.query('ROLLBACK');
+    error.statusCode = 409;
 
     throw error;
-
-  } finally {
-
-    client.release();
-
   }
 
+  const hashedPassword = await bcrypt.hash(
+    password,
+    12
+  );
+
+  const user = await createUser(
+    firstName,
+    lastName,
+    normalizedEmail,
+    hashedPassword,
+    phone,
+    role
+  );
+
+  if (role === 'PLAYER') {
+    await createPlayerProfile(user.id);
+  }
+
+  if (role === 'SCOUT') {
+    await createScoutProfile(user.id);
+  }
+
+  return user;
 }
 
 
-// ============================================
-// LOGIN USER
-// ============================================
+// ==============================
+// Login User
+// ==============================
 
-export async function loginUser({
+export async function loginUser(
   email,
   password
-}) {
+) {
+  const normalizedEmail = normalizeEmail(email);
 
-  const client = await getClient();
+  const user = await findUserByEmail(
+    normalizedEmail
+  );
 
-  try {
-
-    const normalizedEmail =
-      normalizeEmail(email);
-
-
-    const user = await findUserByEmail(
-      client,
-      normalizedEmail
+  if (!user) {
+    const error = new Error(
+      'Invalid email or password.'
     );
 
+    error.statusCode = 401;
 
-    if (!user) {
-
-      return {
-        success: false,
-        status: 401,
-        message: 'Invalid email or password.'
-      };
-
-    }
-
-
-    const passwordMatches =
-      await bcrypt.compare(
-        password,
-        user.password
-      );
-
-
-    if (!passwordMatches) {
-
-      return {
-        success: false,
-        status: 401,
-        message: 'Invalid email or password.'
-      };
-
-    }
-
-
-    return {
-      success: true,
-      user
-    };
-
-
-  } finally {
-
-    client.release();
-
+    throw error;
   }
 
+  const passwordMatches = await bcrypt.compare(
+    password,
+    user.password
+  );
+
+  if (!passwordMatches) {
+    const error = new Error(
+      'Invalid email or password.'
+    );
+
+    error.statusCode = 401;
+
+    throw error;
+  }
+
+  return {
+    id: user.id,
+    firstName: user.first_name,
+    lastName: user.last_name,
+    email: user.email,
+    role: user.role
+  };
+}
+
+
+// ==============================
+// Change User Password
+// ==============================
+
+export async function changeUserPassword(
+  userId,
+  currentPassword,
+  newPassword
+) {
+  const user = await findUserById(userId);
+
+  if (!user) {
+    const error = new Error(
+      'User not found.'
+    );
+
+    error.statusCode = 404;
+
+    throw error;
+  }
+
+  const currentPasswordMatches =
+    await bcrypt.compare(
+      currentPassword,
+      user.password
+    );
+
+  if (!currentPasswordMatches) {
+    const error = new Error(
+      'Current password is incorrect.'
+    );
+
+    error.statusCode = 401;
+
+    throw error;
+  }
+
+  const newPasswordMatchesCurrent =
+    await bcrypt.compare(
+      newPassword,
+      user.password
+    );
+
+  if (newPasswordMatchesCurrent) {
+    const error = new Error(
+      'New password must be different from your current password.'
+    );
+
+    error.statusCode = 400;
+
+    throw error;
+  }
+
+  const hashedNewPassword =
+    await bcrypt.hash(
+      newPassword,
+      12
+    );
+
+  await updateUserPassword(
+    userId,
+    hashedNewPassword
+  );
+
+  return true;
 }

@@ -1,4 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 
 import {
   getPlayerProfile,
@@ -6,58 +10,116 @@ import {
   uploadPlayerPhoto
 } from '../api/playerApi.js';
 
-import { useAuth } from '../context/AuthContext.jsx';
+import {
+  useAuth
+} from '../context/AuthContext.jsx';
 
-import PlayerProfileHeader from '../components/player/playerProfileHeader.jsx';
-import ProfileCompletion from '../components/player/ProfileCompletion.jsx';
-import FootballInformation from '../components/player/FootballInformation.jsx';
-import ClubHistory from '../components/player/clubHistory.jsx';
-import Achievements from '../components/player/Achievements.jsx';
-import EditPlayerProfile from '../components/player/EditPlayerProfile.jsx';
-import LanguageSelector from '../components/common/LanguageSelector.jsx';
-import Videos from '../components/player/Videos.jsx';
-import { useTranslation } from 'react-i18next';
+import PlayerProfileHeader
+  from '../components/player/playerProfileHeader.jsx';
+
+import ProfileCompletion
+  from '../components/player/ProfileCompletion.jsx';
+
+import FootballInformation
+  from '../components/player/FootballInformation.jsx';
+
+import ClubHistory
+  from '../components/player/clubHistory.jsx';
+
+import Achievements
+  from '../components/player/Achievements.jsx';
+
+import EditPlayerProfile
+  from '../components/player/EditPlayerProfile.jsx';
+
+import PlayerSettingsModal
+  from '../components/player/PlayerSettingsModal.jsx';
+
+import LanguageSelector
+  from '../components/common/LanguageSelector.jsx';
+
+import Videos
+  from '../components/player/Videos.jsx';
+
+import {
+  useTranslation
+} from 'react-i18next';
 
 
 const PlayerProfile = () => {
 
-  const { user: currentUser } =
-    useAuth();
-
-  const { t } =
-    useTranslation();
+  const {
+    user: currentUser
+  } = useAuth();
 
 
-  const [player,
-    setPlayer] =
-    useState(null);
-
-  const [clubHistory,
-    setClubHistory] =
-    useState([]);
+  const {
+    t
+  } = useTranslation();
 
 
-  const [loading,
-    setLoading] =
-    useState(true);
+  /* =========================================================
+     PLAYER DATA
+  ========================================================= */
 
-  const [error,
-    setError] =
-    useState('');
-
-
-  const [editing,
-    setEditing] =
-    useState(false);
-
-  const [uploadingPhoto,
-    setUploadingPhoto] =
-    useState(false);
+  const [
+    player,
+    setPlayer
+  ] = useState(null);
 
 
-  const [activeTab,
-    setActiveTab] =
-    useState('videos');
+  const [
+    clubHistory,
+    setClubHistory
+  ] = useState([]);
+
+
+  /* =========================================================
+     PAGE STATE
+  ========================================================= */
+
+  const [
+    loading,
+    setLoading
+  ] = useState(true);
+
+
+  const [
+    error,
+    setError
+  ] = useState('');
+
+
+  /* =========================================================
+     MODAL STATE
+  ========================================================= */
+
+  const [
+    editing,
+    setEditing
+  ] = useState(false);
+
+
+  const [
+    settingsOpen,
+    setSettingsOpen
+  ] = useState(false);
+
+
+  const [
+    uploadingPhoto,
+    setUploadingPhoto
+  ] = useState(false);
+
+
+  /* =========================================================
+     ACTIVE TAB
+  ========================================================= */
+
+  const [
+    activeTab,
+    setActiveTab
+  ] = useState('videos');
 
 
   /* =========================================================
@@ -77,6 +139,7 @@ const PlayerProfile = () => {
           setClubHistory(
             result?.data?.history || []
           );
+
 
         } catch (err) {
 
@@ -116,28 +179,11 @@ const PlayerProfile = () => {
             ]);
 
 
-          /*
-           * playerApi.js returns:
-           *
-           * {
-           *   response,
-           *   data
-           * }
-           *
-           * The actual player profile is:
-           *
-           * profileResult.data.profile
-           */
-
           setPlayer(
             profileResult?.data?.profile ||
             null
           );
 
-
-          /*
-           * Club history is returned separately.
-           */
 
           setClubHistory(
             clubHistoryResult?.data?.history ||
@@ -155,13 +201,13 @@ const PlayerProfile = () => {
 
           setError(
             err?.message ||
-              t(
-                'playerProfile.errors.loadFailed',
-                {
-                  defaultValue:
-                    'Failed to load your profile.'
-                }
-              )
+            t(
+              'playerProfile.errors.loadProfile',
+              {
+                defaultValue:
+                  'Could not load player profile.'
+              }
+            )
           );
 
 
@@ -188,7 +234,7 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     PHOTO UPLOAD
+     PROFILE PHOTO
   ========================================================= */
 
   const handlePhotoSelected =
@@ -211,15 +257,6 @@ const PlayerProfile = () => {
           );
 
 
-        /*
-         * The upload endpoint returns:
-         *
-         * {
-         *   response,
-         *   data
-         * }
-         */
-
         if (
           result?.data?.profile
         ) {
@@ -227,6 +264,7 @@ const PlayerProfile = () => {
           setPlayer(
             result.data.profile
           );
+
 
         } else if (
           result?.data?.player
@@ -236,12 +274,9 @@ const PlayerProfile = () => {
             result.data.player
           );
 
+
         } else {
 
-          /*
-           * Fallback:
-           * reload everything from backend.
-           */
           await loadProfile();
 
         }
@@ -257,13 +292,13 @@ const PlayerProfile = () => {
 
         setError(
           err?.message ||
-            t(
-              'playerProfile.errors.photoUploadFailed',
-              {
-                defaultValue:
-                  'Failed to upload your profile photo.'
-              }
-            )
+          t(
+            'playerProfile.errors.uploadPhoto',
+            {
+              defaultValue:
+                'Could not upload profile photo.'
+            }
+          )
         );
 
 
@@ -277,27 +312,15 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     HANDLE EDIT PROFILE UPDATE
+     PROFILE UPDATED
   ========================================================= */
 
   const handleProfileUpdated =
     useCallback(
       async () => {
 
-        /*
-         * Reload the profile from the
-         * backend after Edit Profile saves.
-         *
-         * This is important because the backend
-         * recalculates profile completion.
-         */
         await loadProfile();
 
-
-        /*
-         * Close the edit modal only after the
-         * latest profile has been loaded.
-         */
         setEditing(false);
 
       },
@@ -306,7 +329,7 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     LOADING
+     LOADING STATE
   ========================================================= */
 
   if (loading) {
@@ -316,7 +339,6 @@ const PlayerProfile = () => {
       <>
 
         <LanguageSelector />
-
 
         <main className="player-profile-page">
 
@@ -342,7 +364,7 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     ERROR
+     ERROR STATE
   ========================================================= */
 
   if (error && !player) {
@@ -352,7 +374,6 @@ const PlayerProfile = () => {
       <>
 
         <LanguageSelector />
-
 
         <main className="player-profile-page">
 
@@ -372,7 +393,7 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     NO PROFILE
+     PROFILE NOT FOUND
   ========================================================= */
 
   if (!player) {
@@ -383,13 +404,12 @@ const PlayerProfile = () => {
 
         <LanguageSelector />
 
-
         <main className="player-profile-page">
 
           <div className="player-profile-error">
 
             {t(
-              'playerProfile.errors.profileNotFound',
+              'playerProfile.errors.loadProfile',
               {
                 defaultValue:
                   'Player profile not found.'
@@ -408,7 +428,7 @@ const PlayerProfile = () => {
 
 
   /* =========================================================
-     PROFILE
+     MAIN PAGE
   ========================================================= */
 
   return (
@@ -421,49 +441,66 @@ const PlayerProfile = () => {
       <main className="player-profile-page">
 
 
-        {/* =====================================================
+        {/* ===================================================
             PLAYER HEADER
-        ===================================================== */}
+        =================================================== */}
 
         <PlayerProfileHeader
-          player={player}
-          currentUser={currentUser}
+
+          player={
+            player
+          }
+
+          currentUser={
+            currentUser
+          }
+
           onEdit={() =>
             setEditing(true)
           }
+
+          onSettings={() =>
+            setSettingsOpen(true)
+          }
+
           onPhotoSelected={
             handlePhotoSelected
           }
+
           uploadingPhoto={
             uploadingPhoto
           }
+
         />
 
 
-        {/* =====================================================
+        {/* ===================================================
             PROFILE COMPLETION
-        ===================================================== */}
+        =================================================== */}
 
         {!player.profileCompleted && (
 
           <ProfileCompletion
-            player={player}
+
+            player={
+              player
+            }
+
             onProfileUpdated={
               loadProfile
             }
+
           />
 
         )}
 
 
-        {/* =====================================================
-            TABS
-        ===================================================== */}
+        {/* ===================================================
+            PROFILE TABS
+        =================================================== */}
 
         <div className="player-profile-tabs">
 
-
-          {/* VIDEOS */}
 
           <button
             type="button"
@@ -484,8 +521,6 @@ const PlayerProfile = () => {
           </button>
 
 
-          {/* INFO */}
-
           <button
             type="button"
             className={`player-profile-tab ${
@@ -504,8 +539,6 @@ const PlayerProfile = () => {
 
           </button>
 
-
-          {/* TRIALS */}
 
           <button
             type="button"
@@ -529,79 +562,79 @@ const PlayerProfile = () => {
         </div>
 
 
-        {/* =====================================================
+        {/* ===================================================
             TAB CONTENT
-        ===================================================== */}
+        =================================================== */}
 
         <div className="player-profile-tab-content">
 
 
-          {/* ===================================================
+          {/* =================================================
               VIDEOS
-          =================================================== */}
+          ================================================= */}
 
           {activeTab === 'videos' && (
-  <Videos
-    profileCompleted={
-      player.profileCompleted
-    }
-  />
-)}
+
+            <Videos
+
+              profileCompleted={
+                player.profileCompleted
+              }
+
+            />
+
+          )}
 
 
-          {/* ===================================================
+          {/* =================================================
               INFO
-          =================================================== */}
+          ================================================= */}
 
           {activeTab === 'info' && (
 
             <div className="player-content-grid">
 
 
-              {/* -----------------------------------------------
-                  PLAYER DETAILS
-              ------------------------------------------------ */}
-
               <div className="player-info-football">
 
                 <FootballInformation
-                  player={player}
+                  player={
+                    player
+                  }
                 />
 
               </div>
 
-
-              {/* -----------------------------------------------
-                  CLUB HISTORY
-              ------------------------------------------------ */}
 
               <div className="player-info-club-history">
 
                 <ClubHistory
+
                   clubHistory={
                     clubHistory
                   }
+
                   onClubHistoryChanged={
                     loadClubHistory
                   }
+
                 />
 
               </div>
 
 
-              {/* -----------------------------------------------
-                  ACHIEVEMENTS
-              ------------------------------------------------ */}
-
               <div className="player-info-achievements">
 
                 <Achievements
+
                   achievements={
                     player.achievements || []
                   }
+
                   onAchievementsChanged={
                     loadProfile
                   }
+
                 />
 
               </div>
@@ -612,13 +645,14 @@ const PlayerProfile = () => {
           )}
 
 
-          {/* ===================================================
+          {/* =================================================
               TRIALS
-          =================================================== */}
+          ================================================= */}
 
           {activeTab === 'trials' && (
 
             <div className="player-profile-empty-state">
+
 
               <div className="player-profile-empty-icon">
                 🏆
@@ -642,6 +676,7 @@ const PlayerProfile = () => {
 
               </p>
 
+
             </div>
 
           )}
@@ -650,32 +685,43 @@ const PlayerProfile = () => {
         </div>
 
 
-        {/* =====================================================
-            EDIT PROFILE
-        ===================================================== */}
+        {/* ===================================================
+            EDIT PROFILE MODAL
+        =================================================== */}
 
         {editing && (
 
           <EditPlayerProfile
-            player={player}
+
+            player={
+              player
+            }
 
             onClose={() =>
               setEditing(false)
             }
 
-            /*
-             * IMPORTANT:
-             *
-             * This prop name must match the
-             * child component:
-             *
-             * EditPlayerProfile({
-             *   onUpdated
-             * })
-             */
             onUpdated={
               handleProfileUpdated
             }
+
+          />
+
+        )}
+
+
+        {/* ===================================================
+            SETTINGS MODAL
+        =================================================== */}
+
+        {settingsOpen && (
+
+          <PlayerSettingsModal
+
+            onClose={() =>
+              setSettingsOpen(false)
+            }
+
           />
 
         )}
